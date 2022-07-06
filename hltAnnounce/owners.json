@@ -796,10 +796,9 @@
         "TOP"
     ],
     "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v": [
-        "AlCa",
+        "AlCa (Express)",
         "B2G",
         "EGM",
-        "Express",
         "HIG",
         "SMP",
         "SUS",
@@ -902,7 +901,7 @@
         "TOP"
     ],
     "HLT_ExpressMuons_v": [
-        "TSG"
+        "TSG (DQM)"
     ],
     "HLT_HT300_Beamspot_v": [
         "AlCa",
@@ -980,8 +979,7 @@
         "HIG"
     ],
     "HLT_IsoMu20_v": [
-        "AlCa",
-        "Express",
+        "AlCa (Express)",
         "MUO",
         "SMP"
     ],
@@ -1001,9 +999,8 @@
         "SMP"
     ],
     "HLT_IsoMu24_v": [
-        "AlCa",
+        "AlCa (Express)",
         "B2G",
-        "Express",
         "HIG",
         "MUO",
         "SMP",
@@ -1022,9 +1019,8 @@
         "HIG"
     ],
     "HLT_IsoMu27_v": [
-        "AlCa",
+        "AlCa (Express)",
         "B2G",
-        "Express",
         "HIG",
         "MUO",
         "SMP",
@@ -1060,7 +1056,7 @@
     "HLT_L1SingleMu18_v": [],
     "HLT_L1SingleMu25_v": [],
     "HLT_L1SingleMuCosmics_v": [
-        "TSG (cosmics)"
+        "TSG (Cosmics)"
     ],
     "HLT_L1UnpairedBunchBptxMinus_v": [],
     "HLT_L1UnpairedBunchBptxPlus_v": [],
@@ -1228,9 +1224,8 @@
         "TOP"
     ],
     "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v": [
-        "AlCa",
+        "AlCa (Express)",
         "B2G",
-        "Express",
         "HIG",
         "MUO",
         "SMP",
@@ -2074,8 +2069,7 @@
         "TSG"
     ],
     "HLT_Physics_v": [
-        "AlCa",
-        "Express"
+        "AlCa (Express)"
     ],
     "HLT_QuadPFJet103_88_75_15_DoublePFBTagDeepCSV_1p3_7p7_VBF1_v": [
         "EXO",
@@ -2162,8 +2156,7 @@
         "HIG"
     ],
     "HLT_Random_v": [
-        "AlCa",
-        "Express"
+        "AlCa (Express)"
     ],
     "HLT_Rsq0p35_v": [],
     "HLT_Rsq0p40_v": [],
@@ -2255,8 +2248,7 @@
         "HIG"
     ],
     "HLT_ZeroBias_Alignment_v": [
-        "AlCa",
-        "Express"
+        "AlCa (Express)"
     ],
     "HLT_ZeroBias_Beamspot_v": [
         "AlCa",
@@ -2266,15 +2258,13 @@
         "DPG"
     ],
     "HLT_ZeroBias_FirstCollisionAfterAbortGap_v": [
-        "AlCa",
-        "Express"
+        "AlCa (Express)"
     ],
     "HLT_ZeroBias_FirstCollisionInTrain_v": [
         "DPG"
     ],
     "HLT_ZeroBias_IsolatedBunches_v": [
-        "AlCa",
-        "Express"
+        "AlCa (Express)"
     ],
     "HLT_ZeroBias_LastCollisionInTrain_v": [
         "DPG"
@@ -2312,8 +2302,7 @@
         "TSG"
     ],
     "HLT_ZeroBias_v": [
-        "AlCa",
-        "Express",
+        "AlCa (Express)",
         "SMP"
     ],
     "MC_AK4CaloJetsFromPV_v": [
