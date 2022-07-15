@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
   opts = Options()
   opts.only1 = False
-  opts.only2 = True
+  opts.only2 = False
 
   for groupName in [
     'paths',
