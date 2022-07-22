@@ -128,6 +128,17 @@ def getL1TSeed(process, pathName):
         break
   return ret
 
+def getDatasetStreamDict(process):
+  # key: "Dataset", value: list of "Streams"
+  ret = {}
+  for dataset_i in process.datasets.parameterNames_():
+    ret[dataset_i] = []
+    for stream_i in process.streams.parameterNames_():
+      if dataset_i in process.streams.getParameter(stream_i):
+        ret[dataset_i].append(stream_i)
+    ret[dataset_i] = sorted(list(set(ret[dataset_i])))
+  return ret
+
 def create_csv(outputFilePath, delimiter, lines):
   # create output directory
   MKDIRP(os.path.dirname(outputFilePath))
@@ -266,6 +277,16 @@ def main():
     outputFilePath = os.path.join(config.output_dir, 'tabHLTMenu.csv'),
     delimiter = config.csv_delimiter,
     lines = linesHLTMenu,
+  )
+
+  ## Tab: HLT Datasets and Streams
+  dsetDict = getDatasetStreamDict(process)
+  linesHLTDatasetsAndStreams = [['Primary Dataset', 'Stream']]
+  linesHLTDatasetsAndStreams += [[dset, ', '.join(dsetDict[dset])] for dset in sorted(dsetDict.keys())]
+  create_csv(
+    outputFilePath = os.path.join(config.output_dir, 'tabHLTDatasetsAndStreams.csv'),
+    delimiter = config.csv_delimiter,
+    lines = linesHLTDatasetsAndStreams,
   )
 
 ###
