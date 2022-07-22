@@ -220,15 +220,15 @@ def main():
   )
 
   ## Tab: HLT Menu
-  pathMetadataDict = {}
-  if config.pathMetadata_json and os.path.isfile(config.pathMetadata_json):
-    pathMetadataDict = json.load(open(config.pathMetadata_json))
+  metadataDict = {}
+  if config.metadata_json and os.path.isfile(config.metadata_json):
+    metadataDict = json.load(open(config.metadata_json))
 
   pathAttributes = {}
   for pathName in pathNames:
     pathNameUnv = pathName[:pathName.rfind('_v')+2] if '_v' in pathName else pathName
-    pathOwners = ', '.join(pathMetadataDict[pathNameUnv]['owners']) if pathNameUnv in pathMetadataDict else ''
-    pathIsOnline = 'Yes' if (pathNameUnv in pathMetadataDict and pathMetadataDict[pathNameUnv]['online?']) else 'No'
+    pathOwners = ', '.join(metadataDict[pathNameUnv]['owners']) if pathNameUnv in metadataDict else ''
+    pathIsOnline = 'Yes' if pathNameUnv in metadataDict and metadataDict[pathNameUnv]['online?'] else 'No'
     pathAttributes[pathName] = {
       'Owners': pathOwners,
       'Online?': pathIsOnline,
