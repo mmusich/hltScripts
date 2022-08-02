@@ -120,12 +120,16 @@ def getStreams(process, pathName):
 def getL1TSeed(process, pathName):
   ret = ''
   path = process.paths_()[pathName]
+  minIdx = None
   for modName in path.moduleNames():
     module = getattr(process, modName)
+    try: modIdx = path.index(module)
+    except: continue
     if module.type_() == 'HLTL1TSeed':
       if hasattr(module, 'L1SeedsLogicalExpression'):
-        ret = module.L1SeedsLogicalExpression.value()
-        break
+        if minIdx == None or modIdx < minIdx:
+          ret = module.L1SeedsLogicalExpression.value()
+          minIdx = modIdx
   return ret
 
 def getDatasetStreamDict(process):
