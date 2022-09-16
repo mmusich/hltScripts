@@ -54,6 +54,12 @@
       "LUM"
     ]
   },
+  "AlCa_PFJet40_CPUOnly_v": {
+    "online?": true,
+    "owners": [
+      "TSG"
+    ]
+  },
   "AlCa_PFJet40_v": {
     "online?": true,
     "owners": [
@@ -83,6 +89,12 @@
     "online?": true,
     "owners": [
       "TSG (DQM)"
+    ]
+  },
+  "DST_HLTMuon_Run3_PFScoutingPixelTracking_v": {
+    "online?": true,
+    "owners": [
+      "TSG (Scouting)"
     ]
   },
   "DST_Physics_v": {
@@ -772,6 +784,12 @@
     "online?": true,
     "owners": []
   },
+  "HLT_DiPFJetAve260_HFJEC_v": {
+    "online?": true,
+    "owners": [
+      "JME"
+    ]
+  },
   "HLT_DiPFJetAve260_v": {
     "online?": true,
     "owners": [
@@ -841,6 +859,18 @@
     "owners": [
       "JME",
       "SMP"
+    ]
+  },
+  "HLT_DiPhoton10Time1ns_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_DiPhoton10Time1p2ns_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
     ]
   },
   "HLT_DiPhoton10Time1p4ns_v": {
@@ -2207,6 +2237,12 @@
       "EXO"
     ]
   },
+  "HLT_HT430_DelayedJet40_DoubleDelay0p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT430_DelayedJet40_DoubleDelay0p5nsTrackless_v": {
     "online?": true,
     "owners": [
@@ -2219,7 +2255,31 @@
       "EXO"
     ]
   },
+  "HLT_HT430_DelayedJet40_SingleDelay0p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay0p5nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay1nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT430_DelayedJet40_SingleDelay1nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay1p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -3248,6 +3308,12 @@
       "TOP"
     ]
   },
+  "HLT_Mu50_L1SingleMuShower_v": {
+    "online?": true,
+    "owners": [
+      "MUO"
+    ]
+  },
   "HLT_Mu50_v": {
     "online?": true,
     "owners": [
@@ -3979,6 +4045,12 @@
     "owners": [
       "JME",
       "SMP"
+    ]
+  },
+  "HLT_PFJet40_GPUvsCPU_v": {
+    "online?": true,
+    "owners": [
+      "TSG"
     ]
   },
   "HLT_PFJet40_v": {
@@ -5087,154 +5159,160 @@
     ]
   },
   "MC_AK4CaloJetsFromPV_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_AK4CaloJets_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_AK4PFJets_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_AK8CaloHT_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_AK8PFHT_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_AK8PFJets_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_AK8TrimPFJets_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_CaloBTagDeepCSV_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_CaloHT_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_CaloMET_JetIdCleaned_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_CaloMET_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_CaloMHT_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_Diphoton10_10_R9Id_OR_IsoCaloId_AND_HE_R9Id_Mass10_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_DoubleEle5_CaloIdL_MW_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_DoubleMuNoFiltersNoVtx_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_DoubleMu_TrkIsoVVL_DZ_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_Ele15_Ele10_CaloIdL_TrackIdL_IsoVL_DZ_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_Ele5_WPTight_Gsf_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_IsoMu_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_PFBTagDeepCSV_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_PFBTagDeepJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_PFHT_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_PFMET_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_PFMHT_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TSG (MC)"
     ]
   },
   "MC_ReducedIterativeTracking_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "TRK",
       "TSG (MC)"
+    ]
+  },
+  "MC_Run3_PFScoutingPixelTracking_v": {
+    "online?": false,
+    "owners": [
+      "TSG (Scouting)"
     ]
   },
   "Status_OnCPU": {

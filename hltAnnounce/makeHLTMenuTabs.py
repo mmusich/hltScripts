@@ -247,7 +247,7 @@ def main():
     pathAttributes[pathName] = {
       'Owners': pathOwners,
       'Online?': pathIsOnline,
-      'PS (2.0E34)': getPrescale(process, pathName, '2.0e34+ZB+HLTPhysics'),
+      'PS (2p0E34)': getPrescale(process, pathName, '2p0E34'),
       'Datasets (SmartPS)': getDatasets(process, pathName),
       'Streams': getStreams(process, pathName),
       'L1T Seed': getL1TSeed(process, pathName),
@@ -257,7 +257,7 @@ def main():
     'Path',
     'Owners',
     'Online?',
-    'PS (2.0E34)',
+    'PS (2p0E34)',
     'Datasets (SmartPS)',
     'Streams',
     'L1T Seed',
