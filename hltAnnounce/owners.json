@@ -1201,6 +1201,12 @@
       "SUS"
     ]
   },
+  "HLT_DoubleEle10_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle10_eta1p22_mMax6_v": {
     "online?": true,
     "owners": [
@@ -1237,7 +1243,19 @@
       "SUS"
     ]
   },
+  "HLT_DoubleEle4_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle4_eta1p22_mMax6_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_DoubleEle4p5_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
       "BPH"
@@ -1249,7 +1267,19 @@
       "BPH"
     ]
   },
+  "HLT_DoubleEle5_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle5_eta1p22_mMax6_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_DoubleEle5p5_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
       "BPH"
@@ -1261,7 +1291,19 @@
       "BPH"
     ]
   },
+  "HLT_DoubleEle6_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle6_eta1p22_mMax6_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_DoubleEle6p5_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
       "BPH"
@@ -1273,7 +1315,19 @@
       "BPH"
     ]
   },
+  "HLT_DoubleEle7_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle7_eta1p22_mMax6_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_DoubleEle7p5_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
       "BPH"
@@ -1297,7 +1351,19 @@
       "SUS"
     ]
   },
+  "HLT_DoubleEle8_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle8_eta1p22_mMax6_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_DoubleEle8p5_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
       "BPH"
@@ -1309,7 +1375,19 @@
       "BPH"
     ]
   },
+  "HLT_DoubleEle9_eta1p22_mMax6_dz0p8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
   "HLT_DoubleEle9_eta1p22_mMax6_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_DoubleEle9p5_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
       "BPH"
@@ -2600,6 +2678,42 @@
     "online?": true,
     "owners": [
       "TSG (Cosmics)"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay0p5nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay0p75nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay1nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay1p25nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p5nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
     ]
   },
   "HLT_L1UnpairedBunchBptxMinus_v": {
@@ -4859,6 +4973,18 @@
   "HLT_RsqMR320_Rsq0p09_MR200_v": {
     "online?": true,
     "owners": []
+  },
+  "HLT_SingleEle8_SingleEGL1_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
+  },
+  "HLT_SingleEle8_v": {
+    "online?": true,
+    "owners": [
+      "BPH"
+    ]
   },
   "HLT_SingleJet30_Mu12_SinglePFJet40_v": {
     "online?": true,
