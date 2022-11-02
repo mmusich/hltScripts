@@ -3425,6 +3425,7 @@
   "HLT_Mu50_L1SingleMuShower_v": {
     "online?": true,
     "owners": [
+      "EXO",
       "MUO"
     ]
   },
