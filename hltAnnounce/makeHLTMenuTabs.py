@@ -239,6 +239,8 @@ def main():
   if config.metadata_json and os.path.isfile(config.metadata_json):
     metadataDict = json.load(open(config.metadata_json))
 
+  psColName = 'HI10kHz'
+
   pathAttributes = {}
   for pathName in pathNames:
     pathNameUnv = pathName[:pathName.rfind('_v')+2] if '_v' in pathName else pathName
@@ -247,7 +249,7 @@ def main():
     pathAttributes[pathName] = {
       'Owners': pathOwners,
       'Online?': pathIsOnline,
-      'PS (2p0E34)': getPrescale(process, pathName, '2p0E34'),
+      'PS ('+psColName+')': getPrescale(process, pathName, psColName),
       'Datasets (SmartPS)': getDatasets(process, pathName),
       'Streams': getStreams(process, pathName),
       'L1T Seed': getL1TSeed(process, pathName),
@@ -257,7 +259,7 @@ def main():
     'Path',
     'Owners',
     'Online?',
-    'PS (2p0E34)',
+    'PS ('+psColName+')',
     'Datasets (SmartPS)',
     'Streams',
     'L1T Seed',

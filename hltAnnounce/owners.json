@@ -134,7 +134,7 @@
     ]
   },
   "DQM_HIPixelReconstruction_v": {
-    "online?": false,
+    "online?": true,
     "owners": [
       "TSG (DQM)"
     ]
