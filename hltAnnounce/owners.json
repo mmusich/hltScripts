@@ -2288,7 +2288,7 @@
     "online?": true,
     "owners": [
       "AlCa",
-      "BeamSpot",
+      "TRK",
       "HIon"
     ]
   },
@@ -2302,7 +2302,7 @@
     "online?": false,
     "owners": [
       "AlCa",
-      "BeamSpot",
+      "TRK",
       "HIon"
     ]
   },
@@ -3756,7 +3756,7 @@
     "online?": true,
     "owners": [
       "AlCa",
-      "BeamSpot"
+      "TRK"
     ]
   },
   "HLT_HT320_L1SingleLLPJet_DisplacedDijet60_Inclusive_v": {
@@ -3871,7 +3871,7 @@
     "online?": true,
     "owners": [
       "AlCa",
-      "BeamSpot"
+      "TRK"
     ]
   },
   "HLT_HT500_DisplacedDijet40_DisplacedTrack_v": {
@@ -4132,20 +4132,26 @@
   },
   "HLT_L1NotBptxOR_v": {
     "online?": true,
-    "owners": []
+    "owners": [
+      "SMP"
+    ]
   },
   "HLT_L1SingleMu18_v": {
     "online?": true,
-    "owners": []
+    "owners": [
+      "MUO"
+    ]
   },
   "HLT_L1SingleMu25_v": {
     "online?": true,
-    "owners": []
+    "owners": [
+      "MUO"
+    ]
   },
   "HLT_L1SingleMuCosmics_v": {
     "online?": true,
     "owners": [
-      "TSG (Cosmics)"
+      "AlCa (TK DPG)"
     ]
   },
   "HLT_L1Tau_DelayedJet40_DoubleDelay0p5nsTrackless_v": {
@@ -4186,16 +4192,20 @@
   },
   "HLT_L1UnpairedBunchBptxMinus_v": {
     "online?": true,
-    "owners": []
+    "owners": [
+      "SMP"
+    ]
   },
   "HLT_L1UnpairedBunchBptxPlus_v": {
     "online?": true,
-    "owners": []
+    "owners": [
+      "SMP"
+    ]
   },
   "HLT_L1_CDC_SingleMu_3_er1p2_TOP120_DPHI2p618_3p142_v": {
     "online?": true,
     "owners": [
-      "AlCa"
+      "AlCa (TK DPG)"
     ]
   },
   "HLT_L2Mu10NoVtx_2Cha_CosmicSeed_VetoL3Mu0DxyMax1cm_v": {
@@ -6645,7 +6655,7 @@
     "online?": true,
     "owners": [
       "AlCa",
-      "BeamSpot"
+      "TRK"
     ]
   },
   "HLT_ZeroBias_FirstBXAfterTrain_v": {
