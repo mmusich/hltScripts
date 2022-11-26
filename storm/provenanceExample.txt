@@ -1,0 +1,37 @@
+diff --git a/Validation/GlobalRecHits/src/GlobalRecHitsAnalyzer.cc b/Validation/GlobalRecHits/src/GlobalRecHitsAnalyzer.cc
+index 35da7a81cea..71dda9ad695 100644
+--- a/Validation/GlobalRecHits/src/GlobalRecHitsAnalyzer.cc
++++ b/Validation/GlobalRecHits/src/GlobalRecHitsAnalyzer.cc
+@@ -615,6 +615,20 @@ void GlobalRecHitsAnalyzer::fillHCal(const edm::Event& iEvent, const edm::EventS
+     int iHB = 0;
+     int iHE = 0;
+     for (ihbhe = hbhe.begin(); ihbhe != hbhe.end(); ++ihbhe) {
++
++      std::string hbheName;
++      std::cout << "HBHE Collection: " << (*ihbhe).id() << " (size = " << (*ihbhe)->size() << ")";
++      uint countHB(iHB), countHE(iHE);
++
++      auto const& prov = *(*ihbhe).provenance();
++      std::cout << "    branchName()          = " << prov.branchName()          << std::endl;
++      std::cout << "    className()           = " << prov.className()           << std::endl;
++      std::cout << "    moduleLabel()         = " << prov.moduleLabel()         << std::endl;
++      std::cout << "    moduleName()          = " << prov.moduleName()          << std::endl;
++      std::cout << "    processName()         = " << prov.processName()         << std::endl;
++      std::cout << "    productInstanceName() = " << prov.productInstanceName() << std::endl;
++      std::cout << "    friendlyClassName()   = " << prov.friendlyClassName()   << std::endl;
++
+       for (HBHERecHitCollection::const_iterator jhbhe = (*ihbhe)->begin(); jhbhe != (*ihbhe)->end(); ++jhbhe) {
+         HcalDetId cell(jhbhe->id());
+ 
+@@ -628,6 +642,11 @@ void GlobalRecHitsAnalyzer::fillHCal(const edm::Event& iEvent, const edm::EventS
+           mehHcalRes[1]->Fill(jhbhe->energy() - fHEEnergySimHits[cell]);
+         }
+       }
++
++      countHB = iHB - countHB;
++      countHE = iHE - countHE;
++      std::cout << " -- Entries: " << countHB << " (HB), " << countHE << " (HE)" << std::endl;
++
+     }  // end loop through collection
+ 
+     if (verbosity > 1) {
