@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import FWCore.ParameterSet.Config as cms
 import os
+import sys
 import json
 
 def getESModuleDict(process):
@@ -13,6 +14,7 @@ def writeJSON(output_file):
   ###
   ### HLT
   ###
+  print('Loading HLT configuration...', file=sys.stderr)
   hltESModules = {}
   for menu in [
     'FULL',
@@ -33,6 +35,7 @@ def writeJSON(output_file):
   ###
   ### RECO (Data)
   ###
+  print('Loading RECO (Data) configuration...', file=sys.stderr)
   os.system('''\
   cmsDriver.py RelVal -s RAW2DIGI,L1Reco,RECO --data --scenario=pp -n 10 --conditions auto:run3_data_GRun --relval 9000,50 \
     --datatier "RAW-HLT-RECO" --eventcontent FEVTDEBUGHLT --customise=HLTrigger/Configuration/CustomConfigs.L1THLT \
@@ -40,12 +43,13 @@ def writeJSON(output_file):
     --era Run3 --processName=HLTRECO --filein file:RelVal_Raw_GRun_DATA.root --fileout file:RelVal_Raw_GRun_DATA_HLT_RECO.root \
     --python_filename recoData_cfg.py --dump_python --no_exec &> /dev/null
   ''')
-  from recoData_cfg import cms,process as recoData
+  from recoData_cfg import process as recoData
   reco_data = getESModuleDict(recoData)
   
   ###
   ### RECO (MC)
   ###
+  print('Loading RECO (MC) configuration...', file=sys.stderr)
   os.system('''\
   cmsDriver.py RelVal -s RAW2DIGI,L1Reco,RECO --mc --scenario=pp -n 10 --conditions auto:run3_mc_GRun --relval 9000,50 \
     --datatier "RAW-HLT-RECO" --eventcontent FEVTDEBUGHLT --customise=HLTrigger/Configuration/CustomConfigs.L1THLT \
@@ -53,9 +57,10 @@ def writeJSON(output_file):
     --era Run3 --processName=HLTRECO --filein file:RelVal_Raw_GRun_MC.root --fileout file:RelVal_Raw_GRun_MC_HLT_RECO.root \
     --python_filename recoMC_cfg.py --dump_python --no_exec &> /dev/null
   ''')
-  from recoMC_cfg import cms,process as recoMC
+  from recoMC_cfg import process as recoMC
   reco_mc = getESModuleDict(recoMC)
-  
+
+  # create output file in JSON format
   json.dump({'HLT': hlt, 'RECO_Data': reco_data, 'RECO_MC': reco_mc},
     open(output_file,'w'), sort_keys=True, indent=2)
 
@@ -71,11 +76,25 @@ if __name__ == '__main__':
 
   out = json.load(open(jsonOutFile))
 
+  checkRECO = False
+  checkHLT = True
+
   # check RECO
-  for recoMC_mod in out['RECO_MC']:
-    if recoMC_mod in out['RECO_Data']:
-      if out['RECO_MC'][recoMC_mod] != out['RECO_Data'][recoMC_mod]:
-        print('RECO diff:', recoMC_mod)
-        print(out['RECO_Data'][recoMC_mod])
-        print(out['RECO_MC'][recoMC_mod])
-        print('---')
+  if checkRECO:
+    for mod in out['RECO_MC']:
+      if mod in out['RECO_Data']:
+        if out['RECO_MC'][mod] != out['RECO_Data'][mod]:
+          print('RECO diff:', mod)
+          print(out['RECO_Data'][mod])
+          print(out['RECO_MC'][mod])
+          print('---')
+
+  # check HLT
+  if checkHLT:
+    for mod in out['HLT']:
+      if mod in out['RECO_Data']:
+        if out['HLT'][mod] != out['RECO_Data'][mod]:
+          print('HLT diff:', mod)
+#          print(out['HLT'][mod])
+#          print(out['RECO_Data'][mod])
+#          print('---')
