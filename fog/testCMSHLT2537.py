@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 
-# hltConfigFromDB --configName /dev/CMSSW_12_4_0/HLT/V201 > offl_new.py
-from offl_new import cms, process as offl
+# hltConfigFromDB --configName /dev/CMSSW_12_6_0/HLT > offl.py
+# hltConfigFromDB --adg --configName /cdaq/physics/Run2022/2e34/v1.5.0/HLT/V13 > onli.py
+from offl import cms, process as offl
 from onli import process as onli
 import fnmatch
+
+def getOnlineColumn(columnName):
+  return columnName
+#  return 'CosmicsHighExpress' if columnName in ['CRUZET','CRAFT'] else columnName
 
 def getPrescaleDict(process, pattern='*'):
   ret = {}
@@ -17,6 +22,13 @@ def getPrescaleDict(process, pattern='*'):
     ret[pathKey] = {}
     for colIdx,colName in enumerate(process.PrescaleService.lvl1Labels):
       ret[pathKey][colName] = pset_i.prescales[colIdx]
+  for paths in [process.paths_(), process.endpaths_()]:
+    for pathName in paths:
+      pathKey = pathName.split('_v')[0]
+      if pathKey not in ret:
+        ret[pathKey] = {}
+        for colIdx,colName in enumerate(process.PrescaleService.lvl1Labels):
+          ret[pathKey][colName] = 1
   return ret
 
 psDict_offl = getPrescaleDict(offl, '*')
@@ -35,24 +47,29 @@ pathNames = sorted(list(set(list(psDict_offl.keys()) + list(psDict_onli.keys()))
 
 # common paths
 pathBlacklist = [
-  'HLT_Mu12eta2p3',
-  'HLT_DoublePFJets350_PFBTagDeepJet_p71',
-  'AlCa_AK8PFJet40',
-  'AlCa_PFJet40',
-  'AlCa_PFJet40_CPUOnly',
-  'HLT_HT200_L1SingleLLPJet_DelayedJet40_SingleDelay1nsTrackless',
-  'HLT_HT200_L1SingleLLPJet_DelayedJet40_DoubleDelay0p5nsTrackless',
+#  'HLT_Mu12eta2p3',
+#  'HLT_DoublePFJets350_PFBTagDeepJet_p71',
+#  'AlCa_AK8PFJet40',
+#  'AlCa_PFJet40',
+#  'AlCa_PFJet40_CPUOnly',
+#  'HLT_HT200_L1SingleLLPJet_DelayedJet40_SingleDelay1nsTrackless',
+#  'HLT_HT200_L1SingleLLPJet_DelayedJet40_DoubleDelay0p5nsTrackless',
 ]
 for col in cols_offl:
-  if col not in cols_onli: continue
-  print('---'+col)
+  col_onli = getOnlineColumn(col)
+  if col_onli not in cols_onli: continue
+  print('---', col)
   for pathName in psDict_onli:
     if pathName in pathBlacklist: continue
     if pathName not in psDict_offl: continue
     psval_offl = psDict_offl[pathName][col]
-    psval_onli = psDict_onli[pathName][col]
+    psval_onli = psDict_onli[pathName][col_onli]
     if psval_offl != psval_onli:
       print(f'{pathName:70} {psval_offl: 5d} {psval_onli: 5d}')
+  print('---')
+
+
+
 
 
 
@@ -72,3 +89,16 @@ for col in cols_offl:
 #    elif val != val2:
 ##      print(pathName)
 #      break
+
+#print('HLTPath,CRUZET,CRAFT')
+#for pathName in psDict_offl:
+#  psvals = []
+#  for col in ['CRUZET', 'CRAFT']:
+#    if pathName not in psDict_onli:
+#      psval = psDict_offl[pathName][col] if pathName.startswith('Dataset_') else (1 if ('_' not in pathName) else 0)
+#    else:
+#      psval = psDict_onli[pathName]['CosmicsHighExpress']
+#    psvals.append(psval)
+#  if len(psvals) != 2: raise RuntimeError('AAA')
+#  if psvals[0] != psvals[1]: raise RuntimeError('BBB')
+#  print(f'{pathName},{psvals[0]},{psvals[1]}')
