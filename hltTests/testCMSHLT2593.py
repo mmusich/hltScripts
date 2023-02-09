@@ -1,8 +1,9 @@
-from hlt import cms,process as hlt
-from grun import process as grun
-from hion import process as hion
-from pref import process as pref
-from pion import process as pion
+# for foo in HLT GRun HIon PRef PIon ; do hltConfigFromDB --configName /dev/CMSSW_13_0_0/"${foo}" > "${foo}".py ; done ; unset foo ;
+from HLT import cms,process as hlt
+from GRun import process as grun
+from HIon import process as hion
+from PRef import process as pref
+from PIon import process as pion
 
 paths = []
 for foo in hlt.paths_():
