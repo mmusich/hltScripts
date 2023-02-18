@@ -13,12 +13,12 @@ stormCherryPick(){
 
 branch=$(git rev-parse --abbrev-ref HEAD)
 
-# git checkout -b HLTdevelopment126X_for130X && git commit -m 'HLT menu development for 12_6_X (branch: 13_0_X)' --allow-empty
-# git checkout -b HLTdevelopment126X && git commit -m 'HLT menu development for 12_6_X' --allow-empty
+# git checkout -b HLTdevelopment130X_for131X && git commit -m 'HLT menu development for 13_0_X (branch: 13_1_X)' --allow-empty
+# git checkout -b HLTdevelopment130X && git commit -m 'HLT menu development for 13_0_X' --allow-empty
 
-if [ "${branch}" = HLTdevelopment126X_for130X ]; then
+if [ "${branch}" = HLTdevelopment130X_for131X ]; then
   sshkey_enable
-  cimsg='HLT menu development for 12_6_X (branch: 13_0_X)'
+  cimsg='HLT menu development for 13_0_X (branch: 13_1_X)'
   cd "${CMSSW_BASE}"/src/HLTrigger/Configuration/tables
   echo cms100kHz | ./makeSubTables
   cd "${CMSSW_BASE}"/src/HLTrigger/Configuration/test
@@ -28,9 +28,10 @@ if [ "${branch}" = HLTdevelopment126X_for130X ]; then
   git push cms-tsg-storm "${branch}" -f
   cd "${CMSSW_BASE}"/src
 
-elif [ "${branch}" = HLTdevelopment126X ]; then
+elif [ "${branch}" = HLTdevelopment130X ]; then
+  [ $# -eq 1 ] || return 1
   sshkey_enable
-  cimsg='HLT menu development for 12_6_X'
+  cimsg='HLT menu development for 13_0_X'
   hash=$1
   cd "${CMSSW_BASE}"/src
   stormCherryPick
