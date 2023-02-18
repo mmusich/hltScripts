@@ -8,6 +8,8 @@ def getESModuleDict(process):
   ret1 = {key:val.dumpPython() for key,val in process.es_producers_().items()}
   ret2 = {key:val.dumpPython() for key,val in process.es_sources_().items()}
   ret1.update(ret2)
+  ret3 = {key:val.dumpPython() for key,val in process.psets_().items()}
+  ret1.update(ret3)
   return ret1
 
 def writeJSON(output_file):
@@ -31,7 +33,7 @@ def writeJSON(output_file):
     if hltESModules['FULL'] != hltESModules[key]:
       raise RuntimeError('HLT menu "'+key+'" has different EventSetup modules compared to HLT menu "FULL"')
   hlt = hltESModules['FULL']
-  
+
   ###
   ### RECO (Data)
   ###
@@ -45,7 +47,7 @@ def writeJSON(output_file):
   ''')
   from recoData_cfg import process as recoData
   reco_data = getESModuleDict(recoData)
-  
+
   ###
   ### RECO (MC)
   ###
@@ -69,7 +71,7 @@ def writeJSON(output_file):
 ###
 if __name__ == '__main__':
 
-  jsonOutFile = 'testCMSHLT2586.json'
+  jsonOutFile = 'testCMSHLT2587.json'
 
   if not os.path.isfile(jsonOutFile):
     writeJSON(jsonOutFile)
@@ -91,12 +93,39 @@ if __name__ == '__main__':
 
   # check HLT
   if checkHLT:
-    for mod in out['HLT']:
-      if mod in out['RECO_Data']:
-        if out['HLT'][mod] != out['RECO_Data'][mod]:
-#          print('HLT diff:', mod)
-#          print(out['HLT'][mod])
-#          print(out['RECO_Data'][mod])
-#          print(mod ,'=', out['HLT'][mod])
-          print(mod ,'=', out['RECO_Data'][mod])
-#          print('---')
+
+    for inputType in ['MC', 'Data']:
+      mods = []
+      for mod in out['HLT']:
+        if mod in out['RECO_'+inputType]:
+          if out['HLT'][mod] != out['RECO_'+inputType][mod]:
+            mods += [mod]
+
+      with open('testCMSHLT2587_diff_HLT.txt', 'w') as ofile:
+        for mod in mods:
+          ofile.write(mod+' = '+out['HLT'][mod]+'\n')
+
+      with open('testCMSHLT2587_diff_'+inputType+'.txt', 'w') as ofile:
+        for mod in mods:
+          ofile.write(mod+' = '+out['RECO_'+inputType][mod]+'\n')
+
+### from dump_RelVal_HLT_Reco_GRun_DATA import cms,process
+### 
+### outName = 'customiseForCMSHLT2587'
+### 
+### with open(outName+'.py', 'w') as ofile:
+###   ofile.write('import FWCore.ParameterSet.Config as cms\n')
+###   ofile.write('\ndef '+outName+'(process):\n\n')
+### 
+###   for mod_type in ['psets', 'es_sources', 'es_producers']:
+###     ofile.write('  ### '+mod_type+'\n\n')
+###     modulesDict = getattr(process, mod_type+'_')()
+###     for modName in sorted(modulesDict.keys()):
+###       modStr = modulesDict[modName].dumpPython().replace('\n', '\n  ')
+###       ofile.write('  '+modName+' = '+modStr+'\n')
+### 
+###   ofile.write('\n')
+###   ofile.write('  return process\n')
+### 
+### #from customiseForCMSHLT2587 import customiseForCMSHLT2587
+### #process = customiseForCMSHLT2587(process)
