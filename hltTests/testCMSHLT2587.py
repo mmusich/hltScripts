@@ -94,7 +94,9 @@ if __name__ == '__main__':
     for mod in out['HLT']:
       if mod in out['RECO_Data']:
         if out['HLT'][mod] != out['RECO_Data'][mod]:
-          print('HLT diff:', mod)
+#          print('HLT diff:', mod)
 #          print(out['HLT'][mod])
 #          print(out['RECO_Data'][mod])
+#          print(mod ,'=', out['HLT'][mod])
+          print(mod ,'=', out['RECO_Data'][mod])
 #          print('---')
