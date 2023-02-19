@@ -43,9 +43,9 @@ def writeJSON(output_file):
     --datatier "RAW-HLT-RECO" --eventcontent FEVTDEBUGHLT --customise=HLTrigger/Configuration/CustomConfigs.L1THLT \
     --customise=HLTrigger/Configuration/CustomConfigs.HLTRECO --customise=HLTrigger/Configuration/CustomConfigs.customiseGlobalTagForOnlineBeamSpot \
     --era Run3 --processName=HLTRECO --filein file:RelVal_Raw_GRun_DATA.root --fileout file:RelVal_Raw_GRun_DATA_HLT_RECO.root \
-    --python_filename recoData_cfg.py --dump_python --no_exec &> /dev/null
+    --python_filename testCMSHLT2587_recoData_cfg.py --dump_python --no_exec &> /dev/null
   ''')
-  from recoData_cfg import process as recoData
+  from testCMSHLT2587_recoData_cfg import process as recoData
   reco_data = getESModuleDict(recoData)
 
   ###
@@ -57,9 +57,9 @@ def writeJSON(output_file):
     --datatier "RAW-HLT-RECO" --eventcontent FEVTDEBUGHLT --customise=HLTrigger/Configuration/CustomConfigs.L1THLT \
     --customise=HLTrigger/Configuration/CustomConfigs.HLTRECO \
     --era Run3 --processName=HLTRECO --filein file:RelVal_Raw_GRun_MC.root --fileout file:RelVal_Raw_GRun_MC_HLT_RECO.root \
-    --python_filename recoMC_cfg.py --dump_python --no_exec &> /dev/null
+    --python_filename testCMSHLT2587_recoMC_cfg.py --dump_python --no_exec &> /dev/null
   ''')
-  from recoMC_cfg import process as recoMC
+  from testCMSHLT2587_recoMC_cfg import process as recoMC
   reco_mc = getESModuleDict(recoMC)
 
   # create output file in JSON format
@@ -108,24 +108,3 @@ if __name__ == '__main__':
       with open('testCMSHLT2587_diff_'+inputType+'.txt', 'w') as ofile:
         for mod in mods:
           ofile.write(mod+' = '+out['RECO_'+inputType][mod]+'\n')
-
-### from dump_RelVal_HLT_Reco_GRun_DATA import cms,process
-### 
-### outName = 'customiseForCMSHLT2587'
-### 
-### with open(outName+'.py', 'w') as ofile:
-###   ofile.write('import FWCore.ParameterSet.Config as cms\n')
-###   ofile.write('\ndef '+outName+'(process):\n\n')
-### 
-###   for mod_type in ['psets', 'es_sources', 'es_producers']:
-###     ofile.write('  ### '+mod_type+'\n\n')
-###     modulesDict = getattr(process, mod_type+'_')()
-###     for modName in sorted(modulesDict.keys()):
-###       modStr = modulesDict[modName].dumpPython().replace('\n', '\n  ')
-###       ofile.write('  '+modName+' = '+modStr+'\n')
-### 
-###   ofile.write('\n')
-###   ofile.write('  return process\n')
-### 
-### #from customiseForCMSHLT2587 import customiseForCMSHLT2587
-### #process = customiseForCMSHLT2587(process)
