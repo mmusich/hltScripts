@@ -8,7 +8,7 @@ def getESModuleDict(process):
   ret1 = {key:val.dumpPython() for key,val in process.es_producers_().items()}
   ret2 = {key:val.dumpPython() for key,val in process.es_sources_().items()}
   ret1.update(ret2)
-  ret3 = {key:val.dumpPython() for key,val in process.psets_().items()}
+  ret3 = {key:val.dumpPython() for key,val in process.psets_().items() if key not in ['options', 'maxEvents']}
   ret1.update(ret3)
   return ret1
 
@@ -75,6 +75,8 @@ if __name__ == '__main__':
 
   if not os.path.isfile(jsonOutFile):
     writeJSON(jsonOutFile)
+  else:
+    print('Loading existing .json file:', jsonOutFile)
 
   out = json.load(open(jsonOutFile))
 
@@ -95,16 +97,20 @@ if __name__ == '__main__':
   if checkHLT:
 
     for inputType in ['MC', 'Data']:
+
+      # modules with the same label/name in HLT and RECO, but different content
       mods = []
       for mod in out['HLT']:
         if mod in out['RECO_'+inputType]:
           if out['HLT'][mod] != out['RECO_'+inputType][mod]:
             mods += [mod]
 
-      with open('testCMSHLT2587_diff_HLT.txt', 'w') as ofile:
-        for mod in mods:
-          ofile.write(mod+' = '+out['HLT'][mod]+'\n')
-
-      with open('testCMSHLT2587_diff_'+inputType+'.txt', 'w') as ofile:
-        for mod in mods:
-          ofile.write(mod+' = '+out['RECO_'+inputType][mod]+'\n')
+      # 2 output files per type (type = Data, or MC), 1 for HLT and 1 for RECO,
+      # each with the content of common modules configured differently at HLT wrt RECO
+      for outType in ['HLT', 'RECO']:
+        outKey = 'HLT' if outType == 'HLT' else outType+'_'+inputType
+        outFile = 'testCMSHLT2587_diff_'+inputType+'_'+outType+'.txt'
+        print('output:', outFile)
+        with open(outFile, 'w') as ofile:
+          for mod in mods:
+            ofile.write(mod+' = '+out[outKey][mod]+'\n')
