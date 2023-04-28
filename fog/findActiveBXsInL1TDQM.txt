@@ -1,0 +1,10 @@
+Copy/paste bin contents from JSON data of L1T histogram in online-DQM, e.g.
+
+L1T/L1TStage2uGT/algoBits_before_bxmask_bx_global
+
+The following returns the list of BXs with data in LHC convention (L1T convention = LHC+2, HLT/CMSSW convention = LHC+1)
+
+python3
+aa = open('tmp.txt').read().splitlines()
+bxs = [int(foo) for foo in aa[0].replace('\t',' ').split()[1:-1]]
+ind = [idx for idx,foo in enumerate(bxs) if foo > 0]
