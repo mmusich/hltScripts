@@ -4,6 +4,9 @@ import sys
 
 import FWCore.ParameterSet.Config as cms
 
+# hltConfigFromDB --configName /dev/CMSSW_12_4_0/HLT > hlt_old.py ; hltConfigFromDB --configName /dev/CMSSW_13_0_0/HLT > hlt_new.py ;
+# cp ../../../hltScripts/storm/diffPathVersions.py . ; ./diffPathVersions.py hlt_old.py hlt_new.py ; rm ./diffPathVersions.py ; 
+
 def getPathsDict(fileName):
   if not os.path.isfile(fileName):
     raise RuntimeError('not a file: '+fileName)

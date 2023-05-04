@@ -2,6 +2,14 @@
 import os
 import sys
 
+# cp ../../../hltScripts/storm/testPathVersionUpdate.py .
+# hltConfigFromDB --configName /dev/CMSSW_13_0_0/HLT/V75 > hlt0.py
+# hltConfigFromDB --configName /dev/CMSSW_13_0_0/HLT/V76 > hlt1.py
+# rm -f hlt0_new.py hlt1_new.py
+# ./testPathVersionUpdate.py hlt0.py hlt0_new.py
+# ./testPathVersionUpdate.py hlt1.py hlt1_new.py
+# rm ./testPathVersionUpdate.py
+
 if len(sys.argv) < 3:
   raise RuntimeError('missing args')
 

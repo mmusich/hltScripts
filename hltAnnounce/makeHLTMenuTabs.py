@@ -206,7 +206,7 @@ def main():
   parser.add_argument('--metadata-json',
                       dest    = 'metadata_json',
                       action  = 'store',
-                      default = None,
+                      default = 'owners.json',
                       help    = 'Path to .json file with metadata on HLT Paths (online?, group-owners)' )
 
   parser.add_argument('-o', '--output-dir',
@@ -239,7 +239,7 @@ def main():
   if config.metadata_json and os.path.isfile(config.metadata_json):
     metadataDict = json.load(open(config.metadata_json))
 
-  psColName = 'HI10kHz'
+  psColName = '2p0E34'
 
   pathAttributes = {}
   for pathName in pathNames:
