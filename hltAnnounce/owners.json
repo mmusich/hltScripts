@@ -175,6 +175,30 @@
       "TSG (Scouting)"
     ]
   },
+  "DST_Run3_DoubleMu3_PFScoutingPixelTracking_v": {
+    "online?": true,
+    "owners": [
+      "TSG (Scouting)"
+    ]
+  },
+  "DST_Run3_EG16_EG12_PFScoutingPixelTracking_v": {
+    "online?": true,
+    "owners": [
+      "TSG (Scouting)"
+    ]
+  },
+  "DST_Run3_EG30_PFScoutingPixelTracking_v": {
+    "online?": true,
+    "owners": [
+      "TSG (Scouting)"
+    ]
+  },
+  "DST_Run3_JetHT_PFScoutingPixelTracking_v": {
+    "online?": true,
+    "owners": [
+      "TSG (Scouting)"
+    ]
+  },
   "DST_Run3_PFScoutingPixelTracking_v": {
     "online?": true,
     "owners": [
@@ -339,6 +363,34 @@
       "SMP"
     ]
   },
+  "HLT_AK8PFJet220_SoftDropMass40_PNetBB0p06_DoubleAK4PFJet60_30_PNet2BTagMean0p50_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet220_SoftDropMass40_PNetBB0p06_DoubleAK4PFJet60_30_PNet2BTagMean0p53_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet220_SoftDropMass40_PNetBB0p06_DoubleAK4PFJet60_30_PNet2BTagMean0p55_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet220_SoftDropMass40_PNetBB0p06_DoubleAK4PFJet60_30_PNet2BTagMean0p60_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
   "HLT_AK8PFJet220_SoftDropMass40_PNetBB0p35_DoubleAK4PFJet60_30_PNet2BTagMean0p50_v": {
     "online?": true,
     "owners": [
@@ -366,6 +418,7 @@
   "HLT_AK8PFJet220_SoftDropMass40_v": {
     "online?": true,
     "owners": [
+      "B2G",
       "HIG"
     ]
   },
@@ -383,10 +436,39 @@
       "HIG"
     ]
   },
+  "HLT_AK8PFJet230_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet230_SoftDropMass40_PNetBB0p10_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet230_SoftDropMass40_PNetTauTau0p03_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet230_SoftDropMass40_PNetTauTau0p05_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
   "HLT_AK8PFJet230_SoftDropMass40_v": {
     "online?": true,
     "owners": [
-      "B2G"
+      "B2G",
+      "HIG"
     ]
   },
   "HLT_AK8PFJet250_SoftDropMass40_PFAK8ParticleNetBB0p35_v": {
@@ -397,6 +479,34 @@
     ]
   },
   "HLT_AK8PFJet250_SoftDropMass40_PFAK8ParticleNetTauTau0p30_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet250_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet250_SoftDropMass40_PNetBB0p10_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet250_SoftDropMass40_PNetTauTau0p03_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet250_SoftDropMass40_PNetTauTau0p05_v": {
     "online?": true,
     "owners": [
       "B2G",
@@ -422,6 +532,34 @@
     ]
   },
   "HLT_AK8PFJet275_SoftDropMass40_PFAK8ParticleNetTauTau0p30_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet275_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet275_SoftDropMass40_PNetBB0p10_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet275_SoftDropMass40_PNetTauTau0p03_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_AK8PFJet275_SoftDropMass40_PNetTauTau0p05_v": {
     "online?": true,
     "owners": [
       "B2G",
@@ -2392,6 +2530,13 @@
       "HIG"
     ]
   },
+  "HLT_Ele50_CaloIdVT_GsfTrkIdT_AK8PFJet220_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
   "HLT_Ele50_CaloIdVT_GsfTrkIdT_AK8PFJet220_SoftDropMass40_v": {
     "online?": true,
     "owners": [
@@ -2406,9 +2551,24 @@
       "HIG"
     ]
   },
+  "HLT_Ele50_CaloIdVT_GsfTrkIdT_AK8PFJet230_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_Ele50_CaloIdVT_GsfTrkIdT_AK8PFJet230_SoftDropMass40_PNetBB0p10_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
   "HLT_Ele50_CaloIdVT_GsfTrkIdT_AK8PFJet230_SoftDropMass40_v": {
     "online?": true,
     "owners": [
+      "B2G",
       "HIG"
     ]
   },
@@ -3960,6 +4120,66 @@
       "EXO"
     ]
   },
+  "HLT_HT350_DelayedJet40_SingleDelay1p5To3nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_DelayedJet40_SingleDelay1p6To3nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_DelayedJet40_SingleDelay1p75To3nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_DelayedJet40_SingleDelay3nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT360_DisplacedDijet40_Inclusive1PtrkShortSig5_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT360_DisplacedDijet45_Inclusive1PtrkShortSig5_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT390_DisplacedDijet40_Inclusive1PtrkShortSig5_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT390_DisplacedDijet45_Inclusive1PtrkShortSig5_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT390eta2p0_DisplacedDijet40_Inclusive1PtrkShortSig5_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT400_DisplacedDijet40_DisplacedTrack_v": {
     "online?": true,
     "owners": [
@@ -4008,6 +4228,12 @@
       "EXO"
     ]
   },
+  "HLT_HT430_DelayedJet40_SingleDelay1To1p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT430_DelayedJet40_SingleDelay1nsInclusive_v": {
     "online?": true,
     "owners": [
@@ -4015,6 +4241,18 @@
     ]
   },
   "HLT_HT430_DelayedJet40_SingleDelay1nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay1p1To1p6nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay1p25To1p75nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -4273,6 +4511,13 @@
       "HIG"
     ]
   },
+  "HLT_IsoMu50_AK8PFJet220_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
   "HLT_IsoMu50_AK8PFJet220_SoftDropMass40_v": {
     "online?": true,
     "owners": [
@@ -4287,9 +4532,24 @@
       "HIG"
     ]
   },
+  "HLT_IsoMu50_AK8PFJet230_SoftDropMass40_PNetBB0p06_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
+  "HLT_IsoMu50_AK8PFJet230_SoftDropMass40_PNetBB0p10_v": {
+    "online?": true,
+    "owners": [
+      "B2G",
+      "HIG"
+    ]
+  },
   "HLT_IsoMu50_AK8PFJet230_SoftDropMass40_v": {
     "online?": true,
     "owners": [
+      "B2G",
       "HIG"
     ]
   },
@@ -4395,7 +4655,25 @@
       "EXO"
     ]
   },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p5To3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_L1Tau_DelayedJet40_SingleDelay2p5nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p6To3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p75To3p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -5453,10 +5731,34 @@
       "BTV"
     ]
   },
+  "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30_PNet2BTagMean0p50_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
   "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFDiJet30_v": {
     "online?": true,
     "owners": [
       "BTV"
+    ]
+  },
+  "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFHT280_QuadPFJet30_PNet2BTagMean0p55_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFHT280_QuadPFJet30_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_PFHT280_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
     ]
   },
   "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_QuadPFJet70_50_40_30_PFBTagParticleNet_2BTagSum0p65_v": {
@@ -5649,6 +5951,30 @@
     "owners": [
       "SMP",
       "SUS"
+    ]
+  },
+  "HLT_PFHT280_QuadPFJet30_PNet2BTagMean0p55_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_PFHT280_QuadPFJet30_PNet2BTagMean0p60_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_PFHT280_QuadPFJet30_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_PFHT280_QuadPFJet35_PNet2BTagMean0p60_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
     ]
   },
   "HLT_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepCSV_4p5_v": {
@@ -5855,6 +6181,18 @@
   "HLT_PFJet15_v": {
     "online?": true,
     "owners": []
+  },
+  "HLT_PFJet200_TimeGt2p5ns_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_PFJet200_TimeLtNeg2p5ns_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
   },
   "HLT_PFJet200_v": {
     "online?": true,
@@ -6432,6 +6770,18 @@
       "SMP"
     ]
   },
+  "HLT_Photon50_TimeGt2p5ns_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_Photon50_TimeLtNeg2p5ns_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_Photon50_v": {
     "online?": true,
     "owners": [
@@ -6470,6 +6820,12 @@
   "HLT_Photon60_R9Id90_CaloIdL_IsoL_v": {
     "online?": true,
     "owners": []
+  },
+  "HLT_Photon60_R9Id90_HE10_IsoM_EBOnly_PFJetsMJJ300DEta3_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
   },
   "HLT_Photon75EB_TightID_TightIso_v": {
     "online?": true,
@@ -6637,6 +6993,12 @@
       "HIG"
     ]
   },
+  "HLT_QuadPFJet105_88_75_30_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
   "HLT_QuadPFJet105_88_76_15_DoublePFBTagDeepCSV_1p3_7p7_VBF1_v": {
     "online?": true,
     "owners": [
@@ -6702,6 +7064,12 @@
     ]
   },
   "HLT_QuadPFJet111_90_80_30_PNet1CvsAll0p6_VBF3Tight_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_QuadPFJet111_90_80_30_v": {
     "online?": true,
     "owners": [
       "HIG"
@@ -6967,6 +7335,90 @@
     "online?": true,
     "owners": [
       "EXO"
+    ]
+  },
+  "HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet125_45_Mjj720_Detajj3p0_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet125_45_Mjj720_Detajj3p0_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Ele12_eta2p1_WPTight_Gsf_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_MediumDeepTauPFTauHPS45_L2NN_eta2p1_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Photon12_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet70_40_Mjj600_Detajj2p5_DiPFJet60_JetMatchingFiveJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet70_40_Mjj600_Detajj2p5_DiPFJet60_JetMatchingQuadJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet70_40_Mjj600_Detajj2p5_DiPFJet60_JetMatchingSixJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_40_Mjj500_Detajj2p5_PFMET85_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_40_Mjj500_Detajj2p5_PFMET85_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet90_40_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet90_40_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_v": {
+    "online?": true,
+    "owners": [
+      "HIG"
     ]
   },
   "HLT_VBF_DoubleLooseChargedIsoPFTau20_Trk1_eta2p1_v": {
