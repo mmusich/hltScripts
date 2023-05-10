@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+check which paths of menu#2 have vN (N > 1) and are not in menu#1
+"""
 import os
 import sys
 

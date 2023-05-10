@@ -5,7 +5,7 @@ stormCherryPick(){
   git branch -D tmp
   git checkout -b tmp
   git branch -D "${branch}"
-  git checkout -b "${branch}" "${CMSSW_VERSION}"
+  git checkout -b "${branch}" tmp^ #"${CMSSW_VERSION}"
   git cherry-pick "${hash}" --no-commit
   git commit -m "${cimsg}"
   git push cms-tsg-storm "${branch}" -f
