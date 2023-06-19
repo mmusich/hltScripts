@@ -1483,6 +1483,18 @@
       "SUS"
     ]
   },
+  "HLT_DoubleCscCluster100_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_DoubleCscCluster75_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_DoubleEle10_eta1p22_mMax6_dz0p8_v": {
     "online?": true,
     "owners": [
@@ -4126,7 +4138,19 @@
       "EXO"
     ]
   },
+  "HLT_HT350_DelayedJet40_SingleDelay1p5To3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT350_DelayedJet40_SingleDelay1p6To3nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_DelayedJet40_SingleDelay1p6To3p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -4138,7 +4162,25 @@
       "EXO"
     ]
   },
+  "HLT_HT350_DelayedJet40_SingleDelay1p75To3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT350_DelayedJet40_SingleDelay3nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_DelayedJet40_SingleDelay3p25nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT350_DelayedJet40_SingleDelay3p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -4210,7 +4252,31 @@
       "EXO"
     ]
   },
+  "HLT_HT430_DelayedJet40_DoubleDelay0p75nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT430_DelayedJet40_DoubleDelay1nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_DoubleDelay1nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_DoubleDelay1p25nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_DoubleDelay1p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -4258,13 +4324,37 @@
       "EXO"
     ]
   },
+  "HLT_HT430_DelayedJet40_SingleDelay1p25nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT430_DelayedJet40_SingleDelay1p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
     ]
   },
+  "HLT_HT430_DelayedJet40_SingleDelay1p5nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_HT430_DelayedJet40_SingleDelay2nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay2p25nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_HT430_DelayedJet40_SingleDelay2p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -4379,6 +4469,12 @@
     "owners": [
       "AlCa (Express)",
       "MUO",
+      "SMP"
+    ]
+  },
+  "HLT_IsoMu24_OneProng32_v": {
+    "online?": true,
+    "owners": [
       "SMP"
     ]
   },
@@ -4655,7 +4751,37 @@
       "EXO"
     ]
   },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay1p25nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay1p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay1p5nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_DoubleDelay1p75nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_L1Tau_DelayedJet40_SingleDelay2p5To3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p5To4nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -4673,13 +4799,49 @@
       "EXO"
     ]
   },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p6To4nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_L1Tau_DelayedJet40_SingleDelay2p75To3p5nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
     ]
   },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p75To4nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay2p75nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay3nsTrackless_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_L1Tau_DelayedJet40_SingleDelay3p5nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay3p75nsInclusive_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_L1Tau_DelayedJet40_SingleDelay4nsInclusive_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -6060,6 +6222,13 @@
     ]
   },
   "HLT_PFHT400_SixPFJet32_DoublePFBTagDeepJet_2p94_v": {
+    "online?": false,
+    "owners": [
+      "B2G",
+      "TOP"
+    ]
+  },
+  "HLT_PFHT400_SixPFJet32_PNet2BTagMean0p50_v": {
     "online?": true,
     "owners": [
       "B2G",
@@ -6069,6 +6238,7 @@
   "HLT_PFHT400_SixPFJet32_v": {
     "online?": true,
     "owners": [
+      "B2G",
       "TOP"
     ]
   },
@@ -6087,6 +6257,13 @@
     ]
   },
   "HLT_PFHT450_SixPFJet36_PFBTagDeepJet_1p59_v": {
+    "online?": false,
+    "owners": [
+      "B2G",
+      "TOP"
+    ]
+  },
+  "HLT_PFHT450_SixPFJet36_PNetBTag0p35_v": {
     "online?": true,
     "owners": [
       "B2G",
@@ -6096,6 +6273,7 @@
   "HLT_PFHT450_SixPFJet36_v": {
     "online?": true,
     "owners": [
+      "B2G",
       "TOP"
     ]
   },
@@ -7349,6 +7527,34 @@
       "HIG"
     ]
   },
+  "HLT_VBF_DiPFJet110_40_Mjj1000_Detajj3p5_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet110_40_Mjj1000_Detajj3p5_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet125_45_Mjj1000_Detajj3p5_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet125_45_Mjj1000_Detajj3p5_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
   "HLT_VBF_DiPFJet125_45_Mjj720_Detajj3p0_TriplePFJet_v": {
     "online?": true,
     "owners": [
@@ -7367,6 +7573,13 @@
       "HIG"
     ]
   },
+  "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Ele17_eta2p1_WPTight_Gsf_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_MediumDeepTauPFTauHPS45_L2NN_eta2p1_v": {
     "online?": true,
     "owners": [
@@ -7376,6 +7589,27 @@
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Photon12_v": {
     "online?": true,
     "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Photon17_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet50_Mjj500_Detajj2p5_Ele22_eta2p1_WPTight_Gsf_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet50_Mjj500_Detajj2p5_Photon22_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
       "HIG"
     ]
   },
@@ -7409,6 +7643,41 @@
       "HIG"
     ]
   },
+  "HLT_VBF_DiPFJet75_45_Mjj600_Detajj2p5_DiPFJet60_JetMatchingFiveJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_45_Mjj600_Detajj2p5_DiPFJet60_JetMatchingQuadJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_45_Mjj600_Detajj2p5_DiPFJet60_JetMatchingSixJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet80_45_Mjj500_Detajj2p5_PFMET85_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet80_45_Mjj500_Detajj2p5_PFMET85_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
   "HLT_VBF_DiPFJet90_40_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_TriplePFJet_v": {
     "online?": true,
     "owners": [
@@ -7418,6 +7687,20 @@
   "HLT_VBF_DiPFJet90_40_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_v": {
     "online?": true,
     "owners": [
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet95_45_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet95_45_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
       "HIG"
     ]
   },
