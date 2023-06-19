@@ -5969,10 +5969,10 @@
   "HLT_Mu8_v": {
     "online?": true,
     "owners": [
+      "BPH",
       "HIG",
       "MUO",
-      "SUS",
-      "BPH"
+      "SUS"
     ]
   },
   "HLT_Mu9_IP0_part0_v": {
