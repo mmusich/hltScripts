@@ -2467,6 +2467,7 @@
     "online?": true,
     "owners": [
       "EGM",
+      "HIG",
       "SMP",
       "SUS"
     ]
@@ -5970,7 +5971,8 @@
     "owners": [
       "HIG",
       "MUO",
-      "SUS"
+      "SUS",
+      "BPH"
     ]
   },
   "HLT_Mu9_IP0_part0_v": {
