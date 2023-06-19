@@ -30,6 +30,7 @@ if [ "${branch}" = HLTdevelopment130X_for132X ]; then
   cd "${CMSSW_BASE}"/src
 
 elif [ "${branch}" = HLTdevelopment130X_for131X ]; then
+  [ $# -eq 1 ] || return 1
   sshkey_enable
   cimsg='HLT menu development for 13_0_X (branch: 13_1_X)'
   hash=$1
