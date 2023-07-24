@@ -1483,6 +1483,12 @@
       "SUS"
     ]
   },
+  "HLT_DisplacedMu24_MediumChargedIsoDisplacedPFTauHPS24_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_DoubleCscCluster100_v": {
     "online?": true,
     "owners": [
@@ -1913,7 +1919,19 @@
       "EXO"
     ]
   },
+  "HLT_DoubleMediumChargedIsoDisplacedPFTauHPS32_Trk1_eta2p1_noDxy_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_DoubleMediumChargedIsoDisplacedPFTauHPS32_Trk1_eta2p1_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
+  "HLT_DoubleMediumChargedIsoDisplacedPFTauHPS36_Trk1_eta2p1_v": {
     "online?": true,
     "owners": [
       "EXO"
@@ -1938,6 +1956,12 @@
     ]
   },
   "HLT_DoubleMediumDeepTauPFTauHPS30_L2NN_eta2p1_OneProng_M5to80_v": {
+    "online?": false,
+    "owners": [
+      "SMP"
+    ]
+  },
+  "HLT_DoubleMediumDeepTauPFTauHPS30_L2NN_eta2p1_OneProng_v": {
     "online?": true,
     "owners": [
       "SMP"
@@ -4510,6 +4534,12 @@
       "HIG"
     ]
   },
+  "HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_OneProng_CrossL1_v": {
+    "online?": true,
+    "owners": [
+      "SMP"
+    ]
+  },
   "HLT_IsoMu24_eta2p1_MediumDeepTauPFTauHPS30_L2NN_eta2p1_PFJet60_CrossL1_v": {
     "online?": true,
     "owners": [
@@ -4565,6 +4595,12 @@
   "HLT_IsoMu27_MET90_v": {
     "online?": true,
     "owners": []
+  },
+  "HLT_IsoMu27_MediumChargedIsoDisplacedPFTauHPS24_eta2p1_SingleL1_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
   },
   "HLT_IsoMu27_MediumChargedIsoPFTauHPS20_Trk1_eta2p1_SingleL1_v": {
     "online?": true,
@@ -6926,6 +6962,12 @@
       "EXO"
     ]
   },
+  "HLT_Photon34_R9Id90_CaloIdL_IsoL_DisplacedIdL_MediumChargedIsoDisplacedPFTauHPS34_v": {
+    "online?": true,
+    "owners": [
+      "EXO"
+    ]
+  },
   "HLT_Photon35_TwoProngs35_v": {
     "online?": true,
     "owners": [
@@ -7518,25 +7560,39 @@
     ]
   },
   "HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet110_40_Mjj1000_Detajj3p5_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet110_40_Mjj1000_Detajj3p5_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet110_40_Mjj1050_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet110_40_Mjj1050_v": {
     "online?": true,
     "owners": [
       "EXO",
@@ -7544,13 +7600,27 @@
     ]
   },
   "HLT_VBF_DiPFJet125_45_Mjj1000_Detajj3p5_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet125_45_Mjj1000_Detajj3p5_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet125_45_Mjj1050_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet125_45_Mjj1050_v": {
     "online?": true,
     "owners": [
       "EXO",
@@ -7558,43 +7628,50 @@
     ]
   },
   "HLT_VBF_DiPFJet125_45_Mjj720_Detajj3p0_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet125_45_Mjj720_Detajj3p0_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Ele12_eta2p1_WPTight_Gsf_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Ele17_eta2p1_WPTight_Gsf_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_MediumDeepTauPFTauHPS45_L2NN_eta2p1_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Photon12_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet45_Mjj500_Detajj2p5_Photon17_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet45_Mjj550_MediumDeepTauPFTauHPS45_L2NN_eta2p1_v": {
     "online?": true,
     "owners": [
       "EXO",
@@ -7602,13 +7679,27 @@
     ]
   },
   "HLT_VBF_DiPFJet50_Mjj500_Detajj2p5_Ele22_eta2p1_WPTight_Gsf_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet50_Mjj500_Detajj2p5_Photon22_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet50_Mjj500_Ele22_eta2p1_WPTight_Gsf_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet50_Mjj550_Photon22_v": {
     "online?": true,
     "owners": [
       "EXO",
@@ -7616,50 +7707,71 @@
     ]
   },
   "HLT_VBF_DiPFJet70_40_Mjj600_Detajj2p5_DiPFJet60_JetMatchingFiveJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet70_40_Mjj600_Detajj2p5_DiPFJet60_JetMatchingQuadJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet70_40_Mjj600_Detajj2p5_DiPFJet60_JetMatchingSixJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet75_40_Mjj500_Detajj2p5_PFMET85_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet75_40_Mjj500_Detajj2p5_PFMET85_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet75_45_Mjj600_Detajj2p5_DiPFJet60_JetMatchingFiveJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet75_45_Mjj600_Detajj2p5_DiPFJet60_JetMatchingQuadJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet75_45_Mjj600_Detajj2p5_DiPFJet60_JetMatchingSixJet_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_45_Mjj650_DiPFJet60_JetMatchingFiveJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_45_Mjj650_DiPFJet60_JetMatchingQuadJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet75_45_Mjj650_DiPFJet60_JetMatchingSixJet_v": {
     "online?": true,
     "owners": [
       "EXO",
@@ -7667,13 +7779,27 @@
     ]
   },
   "HLT_VBF_DiPFJet80_45_Mjj500_Detajj2p5_PFMET85_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet80_45_Mjj500_Detajj2p5_PFMET85_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet80_45_Mjj550_PFMETNoMu85_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet80_45_Mjj550_PFMETNoMu85_v": {
     "online?": true,
     "owners": [
       "EXO",
@@ -7681,25 +7807,39 @@
     ]
   },
   "HLT_VBF_DiPFJet90_40_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet90_40_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet95_45_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_TriplePFJet_v": {
-    "online?": true,
+    "online?": false,
     "owners": [
       "EXO",
       "HIG"
     ]
   },
   "HLT_VBF_DiPFJet95_45_Mjj600_Detajj2p5_Mu3_TrkIsoVVL_v": {
+    "online?": false,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet95_45_Mjj650_Mu3_TrkIsoVVL_TriplePFJet_v": {
+    "online?": true,
+    "owners": [
+      "EXO",
+      "HIG"
+    ]
+  },
+  "HLT_VBF_DiPFJet95_45_Mjj650_Mu3_TrkIsoVVL_v": {
     "online?": true,
     "owners": [
       "EXO",
