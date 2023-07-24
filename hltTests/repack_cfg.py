@@ -18,7 +18,7 @@ process.configurationMetadata = cms.untracked.PSet(
 )
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(5000)
 )
 
 process.options = cms.untracked.PSet(
