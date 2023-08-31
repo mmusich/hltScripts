@@ -197,6 +197,12 @@ def main():
                       default = defaults.proxy_host,
                       help    = 'Host of the socks proxy (default: "localhost")' )
 
+  parser.add_argument('--prescale-column',
+                      dest    = 'prescale_column',
+                      action  = 'store',
+                      default = '2p0E34',
+                      help    = 'Name of main prescale column (default: "2p0E34")' )
+
   parser.add_argument('--csv-delimiter',
                       dest    = 'csv_delimiter',
                       action  = 'store',
@@ -239,8 +245,6 @@ def main():
   if config.metadata_json and os.path.isfile(config.metadata_json):
     metadataDict = json.load(open(config.metadata_json))
 
-  psColName = '2p0E34'
-
   pathAttributes = {}
   for pathName in pathNames:
     pathNameUnv = pathName[:pathName.rfind('_v')+2] if '_v' in pathName else pathName
@@ -249,7 +253,7 @@ def main():
     pathAttributes[pathName] = {
       'Owners': pathOwners,
       'Online?': pathIsOnline,
-      'PS ('+psColName+')': getPrescale(process, pathName, psColName),
+      'PS ('+config.prescale_column+')': getPrescale(process, pathName, config.prescale_column),
       'Datasets (SmartPS)': getDatasets(process, pathName),
       'Streams': getStreams(process, pathName),
       'L1T Seed': getL1TSeed(process, pathName),
@@ -259,7 +263,7 @@ def main():
     'Path',
     'Owners',
     'Online?',
-    'PS ('+psColName+')',
+    'PS ('+config.prescale_column+')',
     'Datasets (SmartPS)',
     'Streams',
     'L1T Seed',
