@@ -25,13 +25,13 @@ def getConfDBdescr(configBase, connectString, addLink=True, fixCapital=True):
                 description = rows[0].read()
             except:
                 description =""
-            
+
             ## get release, if it is not empty
             try:
                 release = rows[1]
             except:
                 release =""
-            
+
             ## add link to JIRA tickets
             if addLink:
                 posInit = description.find("CMSHLT-")
@@ -40,14 +40,14 @@ def getConfDBdescr(configBase, connectString, addLink=True, fixCapital=True):
                     while (posFinal<len(description) and description[posFinal].isdigit()): posFinal+=1
                     cmshlt = description[posInit:posFinal]
                     description = description.replace(cmshlt,"[[https://its.cern.ch/jira/browse/%s][%s]]"%(cmshlt,cmshlt))
-             
+
             ## add '!' in front of capital letters
             if fixCapital:
                 for i in range(len(description)):
                     if description[i].isupper() and (i==0 or description[i-1]==" "):
                         description = description[:i]+"!"+description[i:]
-            
-            # add release in teh configuration description (eg. /dev/CMSSW_12_3_0/HLT/V18 (CMSSW_12_3_0_pre2) )
+
+            # add release in the configuration description (eg. /dev/CMSSW_X_Y_0/HLT/VZ (CMSSW_X_Y_W) )
             configuration = configuration + " (%s)"%(release)
             ## fill confDBdescr
             confDBdescr.append((configuration,description))
