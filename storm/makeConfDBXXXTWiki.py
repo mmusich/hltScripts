@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 import cx_Oracle
 
@@ -71,5 +71,5 @@ if __name__ == '__main__':
     twiki = '\n'
     for (configuration, description) in confDBdescr:
         ### download the html and parse it
-        twiki += "   * =%s=: %s\n"%(configuration,description)
+        twiki += f"   * ={configuration}=: {description}\n"
     print(twiki)
