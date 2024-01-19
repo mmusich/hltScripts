@@ -53,27 +53,32 @@ if __name__ == '__main__':
         v_promptPlusParking += [[idx+0.5, v_prompt[-1][1] + v_parking[-1][1]]]
         v_lumi += [[idx+0.5, data[year]['Lumi']]]
 
+    color_prompt   = ROOT.TColor.GetColor('#525CEB')
+    color_parking  = ROOT.TColor.GetColor('#BFCFE7')
+    color_scouting = ROOT.TColor.GetColor('#FFB534')
+    color_lumi     = ROOT.TColor.GetColor('#FF00FF')
+
     g_prompt = fill_tgraph('prompt', v_prompt)
-    g_prompt.SetLineColor(1)
-    g_prompt.SetFillColor(1)
+    g_prompt.SetLineColor(color_prompt)
+    g_prompt.SetFillColor(color_prompt)
 
     g_parking = fill_tgraph('parking', v_parking)
-    g_parking.SetLineColor(ROOT.kViolet)
-    g_parking.SetFillColor(ROOT.kViolet)
+    g_parking.SetLineColor(color_parking)
+    g_parking.SetFillColor(color_parking)
 
     g_scouting = fill_tgraph('scouting', v_scouting)
-    g_scouting.SetLineColor(2)
-    g_scouting.SetFillColor(2)
+    g_scouting.SetLineColor(color_scouting)
+    g_scouting.SetFillColor(color_scouting)
 
     g_promptPlusParking = fill_tgraph('promptPlusParking', v_promptPlusParking)
-    g_promptPlusParking.SetLineColor(4)
-    g_promptPlusParking.SetFillColor(4)
+    g_promptPlusParking.SetLineColor(color_parking)
+    g_promptPlusParking.SetFillColor(color_parking)
 
     g_lumi = fill_tgraph('lumi', v_lumi)
     g_lumi.SetLineColor(0)
-    g_lumi.SetFillColor(ROOT.kViolet)
+    g_lumi.SetFillColor(color_lumi)
     g_lumi.SetFillStyle(3353)
-    ROOT.gStyle.SetHatchesSpacing(0.5)
+    ROOT.gStyle.SetHatchesSpacing(0.6)
     ROOT.gStyle.SetHatchesLineWidth(1)
 
     g_prompt.SetBarWidth(0.4)
@@ -197,16 +202,27 @@ if __name__ == '__main__':
     h2.GetYaxis().SetNdivisions(nDivs)
 
     p2.cd()
-    txt0 = ROOT.TPaveText(0.09, 0.86, 0.18, 0.97, 'NDC')
+    txt0 = ROOT.TPaveText(0.09, 0.86, 0.165, 0.97, 'NDC')
     txt0.SetBorderSize(0)
     txt0.SetFillColor(0)
     txt0.SetFillStyle(1001)
     txt0.SetTextAlign(12)
     txt0.SetTextFont(62)
-    txt0.SetTextSize(0.145)
+    txt0.SetTextSize(0.125)
     txt0.SetTextColor(1)
     txt0.AddText('CMS')
     txt0.Draw('same')
+
+    txt00 = ROOT.TPaveText(0.165, 0.84, 0.30, 0.95, 'NDC')
+    txt00.SetBorderSize(0)
+    txt00.SetFillColor(0)
+    txt00.SetFillStyle(1001)
+    txt00.SetTextAlign(12)
+    txt00.SetTextFont(52)
+    txt00.SetTextSize(0.095)
+    txt00.SetTextColor(1)
+    txt00.AddText('Preliminary')
+    txt00.Draw('same')
 
     p0.cd()
     tmp = []
@@ -240,15 +256,15 @@ if __name__ == '__main__':
         tmp += [txt2]
 
     p2.cd()
-    txt3 = ROOT.TPaveText(0.20, 0.84, 0.95, 0.96, 'NDC')
+    txt3 = ROOT.TPaveText(0.30, 0.84, 0.98, 0.96, 'NDC')
     txt3.SetBorderSize(0)
     txt3.SetFillColor(0)
     txt3.SetFillStyle(1001)
-    txt3.SetTextAlign(12)
+    txt3.SetTextAlign(22)
     txt3.SetTextFont(42)
-    txt3.SetTextSize(0.075)
+    txt3.SetTextSize(0.072)
     txt3.SetTextColor(1)
-    txt3.AddText('HLT rates and instantaneous luminosity averaged over one Fill of a given data-taking year')
+    txt3.AddText('HLT rates and inst. luminosity averaged over one Fill of a given data-taking year')
     txt3.Draw('same')
 
     p1.cd()
