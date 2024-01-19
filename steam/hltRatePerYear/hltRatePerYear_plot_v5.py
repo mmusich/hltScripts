@@ -22,6 +22,8 @@ if __name__ == '__main__':
 
     outputFileName = f'230109_'+os.path.splitext(os.path.basename(__file__))[0]+'_'+sys.argv[1]
 
+    preliminary = False
+
     data = {
       2012: {'Prompt':  420.0, 'Parking':  400.0, 'Scouting':   996.0, 'Fill': 2998, 'Lumi': 0.50},
       2015: {'Prompt':  992.5, 'Parking':   98.8, 'Scouting':  1057.1, 'Fill': 4452, 'Lumi': 0.25},
@@ -202,7 +204,13 @@ if __name__ == '__main__':
     h2.GetYaxis().SetNdivisions(nDivs)
 
     p2.cd()
-    txt0 = ROOT.TPaveText(0.09, 0.86, 0.165, 0.97, 'NDC')
+
+    if preliminary:
+        txt0 = ROOT.TPaveText(0.09, 0.86, 0.165, 0.97, 'NDC')
+        txt0.SetTextSize(0.125)
+    else:
+        txt0 = ROOT.TPaveText(0.09, 0.86, 0.18, 0.97, 'NDC')
+        txt0.SetTextSize(0.145)
     txt0.SetBorderSize(0)
     txt0.SetFillColor(0)
     txt0.SetFillStyle(1001)
@@ -222,7 +230,8 @@ if __name__ == '__main__':
     txt00.SetTextSize(0.095)
     txt00.SetTextColor(1)
     txt00.AddText('Preliminary')
-    txt00.Draw('same')
+    if preliminary:
+        txt00.Draw('same')
 
     p0.cd()
     tmp = []
@@ -256,15 +265,21 @@ if __name__ == '__main__':
         tmp += [txt2]
 
     p2.cd()
-    txt3 = ROOT.TPaveText(0.30, 0.84, 0.98, 0.96, 'NDC')
+    if preliminary:
+        txt3 = ROOT.TPaveText(0.30, 0.84, 0.98, 0.96, 'NDC')
+        txt3.SetTextAlign(22)
+        txt3.SetTextSize(0.072)
+        txt3.AddText('HLT rates and inst. luminosity averaged over one Fill of a given data-taking year')
+    else:
+        txt3 = ROOT.TPaveText(0.20, 0.84, 0.95, 0.96, 'NDC')
+        txt3.SetTextAlign(12)
+        txt3.SetTextSize(0.075)
+        txt3.AddText('HLT rates and instantaneous luminosity averaged over one Fill of a given data-taking year')
     txt3.SetBorderSize(0)
     txt3.SetFillColor(0)
     txt3.SetFillStyle(1001)
-    txt3.SetTextAlign(22)
     txt3.SetTextFont(42)
-    txt3.SetTextSize(0.072)
     txt3.SetTextColor(1)
-    txt3.AddText('HLT rates and inst. luminosity averaged over one Fill of a given data-taking year')
     txt3.Draw('same')
 
     p1.cd()
