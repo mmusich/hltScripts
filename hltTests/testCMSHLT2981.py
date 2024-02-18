@@ -3,8 +3,8 @@ import fnmatch
 import os
 import json
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_13_3_0/GRun/V12 > GRun.py')
-from GRun import cms,process
+os.system('hltConfigFromDB --configName /dev/CMSSW_14_0_0/GRun > GRun.py')
+from GRun import cms, process
 
 def getPrescaleDict(process, pattern='*'):
   ret = {}
@@ -76,6 +76,6 @@ for foo in pathNames2:
 for gname in sorted(outDict.keys()):
   print('')
   print('Group:', gname)
-  print('{code}')
+  print('\{code\}')
   for foo in sorted(list(set(outDict[gname]))): print(foo)
-  print('{code}')
+  print('\{code\}')
