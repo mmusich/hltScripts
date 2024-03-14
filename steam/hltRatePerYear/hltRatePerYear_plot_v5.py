@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     outputFileName = f'230109_'+os.path.splitext(os.path.basename(__file__))[0]+'_'+sys.argv[1]
 
-    preliminary = False
+    preliminary = True
 
     data = {
       2012: {'Prompt':  420.0, 'Parking':  400.0, 'Scouting':   996.0, 'Fill': 2998, 'Lumi': 0.50},

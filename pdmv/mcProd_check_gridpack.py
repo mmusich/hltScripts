@@ -80,33 +80,23 @@ if __name__ == '__main__':
 
     datasets = command_output_lines(f'dasgoclient -query "/*/*{campaign_name}*/*RAW*" status=*')
     datasets = sorted(list(set([foo for foo in datasets if foo])))
+
     str_separator = '-'*200
     print(str_separator)
     for dataset in datasets:
         if dataset in datasetMap:
             continue
-        print(dataset)
+        parent_dataset = command_output_lines(f'dasgoclient -query "parent dataset={dataset}"')[0]
+        print(parent_dataset)
+        configs = command_output_lines(f'dasgoclient -query "config dataset={parent_dataset}"')
         config = None
         config_label = None
-        parent_dataset = dataset
-        while config_label == None:
-            configs = command_output_lines(f'dasgoclient -query "config dataset={parent_dataset}"')
-            for config_i in configs:
-                for config_piece in config_i.split('_'):
-                    if campaign_name in config_piece and 'GS' in config_piece:
-                        config = config_i
-                        config_label = config_piece
-                        break
-                if config_label != None:
+        for config in configs:
+            for config_piece in config.split('_'):
+                if campaign_name in config_piece and 'GS' in config_piece:
+                    print(config)
+                    config_label = config_piece
                     break
-            if config_label == None:
-                parent_datasets = command_output_lines(f'dasgoclient -query "parent dataset={parent_dataset}"')
-                parent_datasets = sorted(list(set([foo for foo in parent_datasets if foo])))
-                if len(parent_datasets) != 1:
-                    KILL(f'Invalid number of parent datasets ({len(parent_datasets)}) for dataset {parent_dataset}')
-                parent_dataset = parent_datasets[0]
-        print(parent_dataset)
-        print(config_label)
         fragment_url = f'https://cms-pdmv-prod.web.cern.ch/mcm/public/restapi/requests/get_fragment/{config_label}/0'
         EXE(f'wget -O {config_label}.py {fragment_url} &> /dev/null')
         objs = {'externalLHEProducer': None}
