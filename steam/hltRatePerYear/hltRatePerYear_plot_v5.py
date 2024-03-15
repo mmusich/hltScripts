@@ -20,9 +20,9 @@ def fill_tgraph(name, data):
 if __name__ == '__main__':
     ROOT.gROOT.SetBatch()
 
-    outputFileName = f'230109_'+os.path.splitext(os.path.basename(__file__))[0]+'_'+sys.argv[1]
+    outputFileName = f'240315_'+os.path.splitext(os.path.basename(__file__))[0]+'_'+sys.argv[1]
 
-    preliminary = True
+    preliminary = False
 
     data = {
       2012: {'Prompt':  420.0, 'Parking':  400.0, 'Scouting':   996.0, 'Fill': 2998, 'Lumi': 0.50},
@@ -186,7 +186,7 @@ if __name__ == '__main__':
     h0.GetYaxis().SetLabelSize(p0_factor_y * 0.03)
     h0.GetYaxis().SetTitleSize(p0_factor_y * 0.0275)
     h0.GetYaxis().SetTitleOffset(0.585)
-    h0.GetYaxis().SetRangeUser(0, 2)
+    h0.GetYaxis().SetRangeUser(0.0001, 2)
     h0.GetYaxis().SetNdivisions(nDivs)
 
     h1.GetYaxis().SetTitle('HLT Rate [kHz]')
@@ -269,12 +269,12 @@ if __name__ == '__main__':
         txt3 = ROOT.TPaveText(0.30, 0.84, 0.98, 0.96, 'NDC')
         txt3.SetTextAlign(22)
         txt3.SetTextSize(0.072)
-        txt3.AddText('HLT rates and inst. luminosity averaged over one Fill of a given data-taking year')
+        txt3.AddText('HLT rates and inst. luminosity averaged over one fill of a given data-taking year')
     else:
         txt3 = ROOT.TPaveText(0.20, 0.84, 0.95, 0.96, 'NDC')
         txt3.SetTextAlign(12)
         txt3.SetTextSize(0.075)
-        txt3.AddText('HLT rates and instantaneous luminosity averaged over one Fill of a given data-taking year')
+        txt3.AddText('HLT rates and instantaneous luminosity averaged over one fill of a given data-taking year')
     txt3.SetBorderSize(0)
     txt3.SetFillColor(0)
     txt3.SetFillStyle(1001)
