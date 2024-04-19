@@ -3,6 +3,9 @@
 https_proxy=http://cmsproxy.cms:3128/ \
 hltConfigFromDB --runNumber 379617 > hlt.py
 
+rm -rf run37961
+mkdir -p run37961
+
 cat <<@EOF >> hlt.py
 
 import os
