@@ -2,10 +2,13 @@
 
 jobLabel=test_cmssw44786
 
+runNumber=379617 # Alpaka
+#runNumber=379660 # CUDA
+
 if [ ! -f "${jobLabel}"_cfg.py ]; then
 
   https_proxy=http://cmsproxy.cms:3128/ \
-  hltGetConfiguration run:379617 \
+  hltGetConfiguration run:"${runNumber}" \
     --globaltag 140X_dataRun3_HLT_v3 \
     --data \
     --no-prescale \
