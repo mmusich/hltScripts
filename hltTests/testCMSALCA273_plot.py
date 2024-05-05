@@ -35,6 +35,7 @@ if __name__ == '__main__':
  ]
 
  jetRegions = [
+    ['All', ''],
     ['HB', '0.0 <= abs(eta) && abs(eta) < 1.5'],
     ['HE', '1.5 <= abs(eta) && abs(eta) < 3.0'],
     ['HF', '3.0 <= abs(eta)'],
