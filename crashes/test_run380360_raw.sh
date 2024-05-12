@@ -6,6 +6,9 @@ https_proxy=http://cmsproxy.cms:3128 \
 hltConfigFromDB --runNumber "${runNumber}" > tmp.py
 
 cat <<@EOF >> tmp.py
+
+process.hltOnlineBeamSpotESProducer.timeThreshold = int(1e6)
+
 from EventFilter.Utilities.EvFDaqDirector_cfi import EvFDaqDirector as _EvFDaqDirector
 process.EvFDaqDirector = _EvFDaqDirector.clone(
     buBaseDir = '.',
