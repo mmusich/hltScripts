@@ -34,7 +34,7 @@ if [ ${showHelpMsg} == true ]; then
   exit 0
 fi
 
-if ! [[ ${runNumber} =~ '^[0-9]+$' ]]; then
+if ! [[ ${runNumber} =~ ^[0-9]+$ ]]; then
   printf "%s\n" "ERROR -- Command-line argument is not a valid number: ${runNumber} (specify -h or --help for more info)."
   exit 1 
 fi
