@@ -147,7 +147,7 @@ else:
       data_lumis = q_lumis.data()
       data_lumis_dict = data_lumis.json()
       ntot_lumis_tmp = data_lumis_dict["meta"]["totalResourceCount"]
-      npages_lumis = int(1+ntot_lumis/1e5)
+      npages_lumis = int(1+ntot_lumis_tmp/1e5)
       lumis = []
       for page_idx in range(1, 1+npages_lumis):
         q_lumis.paginate(page=page_idx, per_page=int(1e5))
