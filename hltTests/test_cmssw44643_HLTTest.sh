@@ -7,23 +7,33 @@ inputFile=/eos/cms/tier0/store/data/Run2024D/Cosmics/RAW/v1/000/380/379/00000/fd
 hltMenu=/cdaq/test/missirol/test/2024/240602_HLTTest_cosmics/Test02/HLT/V3
 hltConfigFromDB --configName --adg "${hltMenu}" > hlt.py
 
-# prescale HLT_L1SingleMuCosmics_ppTracking_v by 2
 cat <<@EOF >> hlt.py
 
+# load input files in FRD format
 process.load("run${runNumber}_cff")
 
+# lift time threshold of beamspot payloads
 process.hltOnlineBeamSpotESProducer.timeThreshold = int(1e6)
 
 process.options.wantSummary = True
 process.options.numberOfThreads = 4
 process.options.numberOfStreams = 0
 
-process.PrescaleService.forceDefault = True
-psIdx = process.PrescaleService.lvl1Labels.index( process.PrescaleService.lvl1DefaultLabel )
-for pathPSet in process.PrescaleService.prescaleTable:
-    if pathPSet.pathName.value().startswith('HLT_L1SingleMuCosmics_ppTracking_v'):
-        pathPSet.prescales[psIdx] = 2
-        break
+# remove HLT prescales
+del process.PrescaleService
+
+# remove all output streams except for HLTMonitor
+streamPaths = [pathName for pathName in process.finalpaths_() if pathName != 'HLTMonitorOutput']
+for foo in streamPaths:
+    process.__delattr__(foo)
+
+# manually add filter on odd/even event-IDs
+from FWCore.Modules.eventIDFilter_cfi import eventIDFilter as _eventIDFilter
+process.hltEventIDMod2Filter = _eventIDFilter.clone(modulo = 2, offset = 0)
+process.HLT_L1SingleMuCosmics_ppTracking_v1.insert(
+    process.HLT_L1SingleMuCosmics_ppTracking_v1.index(process.hltPreL1SingleMuCosmicsppTracking)+1,
+    process.hltEventIDMod2Filter
+)
 @EOF
 
 ## run on CPU for half of the events, and on GPU for the other half
@@ -33,12 +43,12 @@ rm -f hlt.py
 
 cat <<@EOF >> test_cmssw44643_hlt_cpu.py
 
-process.hltPreL1SingleMuCosmicsppTracking.offset = 0
+process.hltEventIDMod2Filter.offset = 0
 @EOF
 
 cat <<@EOF >> test_cmssw44643_hlt_gpu.py
 
-process.hltPreL1SingleMuCosmicsppTracking.offset = 1
+process.hltEventIDMod2Filter.offset = 1
 @EOF
 
 # GPU case (a 50% of input events)
