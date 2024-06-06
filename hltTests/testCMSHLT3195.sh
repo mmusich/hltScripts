@@ -26,5 +26,5 @@ EOF
 }
 
 runHLT out_ref  /dev/CMSSW_14_0_0/GRun/V127
-runHLT out_tar1 /users/missirol/test/dev/CMSSW_14_0_0/CMSHLT_3195/Test01/GRun/V2
-runHLT out_tar2 /users/missirol/test/dev/CMSSW_14_0_0/CMSHLT_3195/Test02/GRun/V2
+runHLT out_tar1 /users/missirol/test/dev/CMSSW_14_0_0/CMSHLT_3195/Test03/GRun/V2
+runHLT out_tar2 /users/missirol/test/dev/CMSSW_14_0_0/CMSHLT_3195/Test04/GRun/V2
