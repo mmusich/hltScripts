@@ -3,7 +3,7 @@
 jsonFilePaths=(
   /eos/user/c/cmsdqm/www/CAF/certification/Collisions22/Cert_Collisions2022_355100_362760_Golden.json
   /eos/user/c/cmsdqm/www/CAF/certification/Collisions23/Cert_Collisions2023_366442_370790_Golden.json
-  /eos/user/c/cmsdqm/www/CAF/certification/Collisions24/Cert_Collisions2024_378981_380649_Golden.json
+  /eos/user/c/cmsdqm/www/CAF/certification/Collisions24/Cert_Collisions2024_378981_381152_Golden.json
 #  /eos/user/c/cmsdqm/www/CAF/certification/Collisions24/DCSOnly_JSONS/Collisions24_13p6TeV_eraC_379415_380238_DCSOnly_TkPx.json
 )
 

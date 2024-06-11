@@ -80,12 +80,14 @@ if __name__ == '__main__':
                     lsSetOut.add(lsNumber)
 
         lsListOut = sorted(list(lsSetOut))
-        json_output[runNumber] = group_lumisections_list(lsListOut)
+        lsListOutGrouped = group_lumisections_list(lsListOut)
+        if lsListOutGrouped:
+            json_output[runNumber] = lsListOutGrouped
 
         if lsListInp != lsListOut:
             print(f'  {len(lsListInp)-len(lsListOut)} lumisections removed')
             print(f'  input  list: {json_input[runNumber]}')
-            print(f'  output list: {json_output[runNumber]}')
+            print(f'  output list: {lsListOutGrouped}')
 
     if json_input:
         print(stdout_separator)
