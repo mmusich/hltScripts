@@ -17,21 +17,30 @@ if __name__ == '__main__':
     numThreadsPerJobs = 32
     numStreamsPerJobs = 24
 
-    eosDirs = [f'/eos/cms/store/data/Run2024F/EphemeralHLTPhysics{foo}/RAW/v1/000/382/250/00000' for foo in range(7)]
-
     hltMenu = '/dev/CMSSW_14_0_0/GRun/V153'
+
+    useData = True
+
+    if useData:
+        hltLabel = 'hltData'
+        eosDirs = [f'/eos/cms/store/data/Run2024F/EphemeralHLTPhysics{foo}/RAW/v1/000/382/250/00000' for foo in range(7)]
+        globalTag = '140X_dataRun3_HLT_v3'
+    else:
+        hltLabel = 'hltMC'
+        eosDirs = ['/eos/cms/store/relval/CMSSW_14_0_0/RelValQCD_FlatPt_15_3000HS_14/GEN-SIM-DIGI-RAW/PU_140X_mcRun3_2024_realistic_v3_STD_2024_PU-v2/2580000']
+        globalTag = 'auto:phase1_2024_realistic'
 
     hltGetCmd = f"""
 https_proxy=http://cmsproxy.cms:3128/ \
 hltGetConfiguration {hltMenu} \
-  --globaltag 140X_dataRun3_HLT_v3 \
-  --data \
+  --globaltag {globalTag} \
+  --mc \
   --no-prescale \
   --no-output \
   --max-events {numEventsPerJob} \
   --customise HLTrigger/Configuration/customizeHLTforAlpaka.customizeHLTforAlpaka \
-  > hlt.py && \
-cat <<@EOF >> hlt.py
+  > {hltLabel}.py && \
+cat <<@EOF >> {hltLabel}.py
 process.options.numberOfThreads = {numThreadsPerJobs}
 process.options.numberOfStreams = {numStreamsPerJobs}
 process.options.wantSummary = False
@@ -74,9 +83,13 @@ process.load('FWCore.MessageLogger.MessageLogger_cfi')
         print(f'{runLabel} ...')
 
         jobCmds = []
+        hltLogs = []
         for job_i,fileName in enumerate(inputFileBlocks[run_i]):
-            hltLog = f'hlt_{runLabel}_job{job_i}.log'
-            jobCmds += [f'cmsRun hlt.py inputFiles={fileName} &> {hltLog}']
+            hltLogs += [f'{hltLabel}_{runLabel}_job{job_i}.log']
+            jobCmds += [f'cmsRun {hltLabel}.py inputFiles={fileName} &> {hltLogs[-1]}']
 
         pool = multiprocessing.Pool(processes=count)
         pool.map(execmd, jobCmds)
+
+        for hltLog in hltLogs:
+            execmd(f'grep -inrl fatal {hltLog}')
