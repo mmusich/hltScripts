@@ -22,7 +22,7 @@ if __name__ == '__main__':
     useData = True
 
     if useData:
-        hltLabel = 'hltData'
+        hltLabel = 'hltData2'
         eosDirs = [f'/eos/cms/store/data/Run2024F/EphemeralHLTPhysics{foo}/RAW/v1/000/382/250/00000' for foo in range(7)]
         globalTag = '140X_dataRun3_HLT_v3'
     else:
@@ -50,6 +50,8 @@ for foo in ['HLTAnalyzerEndpath', 'dqmOutput', 'MessageLogger']:
         process.__delattr__(foo)
 
 process.load('FWCore.MessageLogger.MessageLogger_cfi')
+
+process.options.accelerators = ['cpu']
 @EOF
 """
 
