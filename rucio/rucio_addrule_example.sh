@@ -45,7 +45,9 @@ datasets=(
 # /store/data/Run2024D/EphemeralHLTPhysics6/RAW/v1/000/380/647/00000/b7d8d958-9a75-49fd-be6b-613653be07d7.root
 # /store/data/Run2024D/EphemeralHLTPhysics7/RAW/v1/000/380/647/00000/5bd9819a-f38b-4129-b598-035aa2dd8d3e.root
 
- /store/data/Run2024A/Cosmics/RAW/v1/000/378/483/00000/e51ad2ec-686a-4246-b879-0ff3add6bc29.root
+# /store/data/Run2024A/Cosmics/RAW/v1/000/378/483/00000/e51ad2ec-686a-4246-b879-0ff3add6bc29.root
+
+ /store/data/Run2024E/ParkingSingleMuon4/RAW/v1/000/381/443/00000/95d48fcb-0633-415c-a5cf-f2caeebab628.root
 )
 
 #    'rse_type=DISK&cms_type=real\tier=3\tier=0' \
@@ -60,7 +62,7 @@ for dataset in "${datasets[@]}"; do
     cms:"${dataset}" \
     1 \
     T2_CH_CERN \
-    --lifetime 1592000 \
+    --lifetime 15552000 \
     --activity "User AutoApprove" \
     --ask-approval \
     --comment "Trigger Studies Group (HLT)"
