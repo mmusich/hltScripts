@@ -65,7 +65,7 @@ process.options.accelerators = ['cpu']
         os.remove('tmp.txt')
     inputFiles = sorted(list(set(inputFiles)))
 
-    count = multiprocessing.cpu_count() * 2 // numThreadsPerJobs
+    count = multiprocessing.cpu_count() // numThreadsPerJobs
     nRuns = math.ceil(len(inputFiles) / count)
 
     for run_i in range(nRuns):
