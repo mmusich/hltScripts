@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
-from sys import argv
+import sys
 
-output = argv[1]
+output = sys.argv[1]
 
 process = cms.Process("REPACK")
 
@@ -34,7 +34,10 @@ process.write = cms.OutputModule("PoolOutputModule",
     dataset = cms.untracked.PSet(
         dataTier = cms.untracked.string('RAW')
     ),
-    fileName = cms.untracked.string(output)
+    fileName = cms.untracked.string(output),
+    splitLevel = cms.untracked.int32(0),
+    compressionAlgorithm = cms.untracked.string("LZMA"),
+    compressionLevel = cms.untracked.int32(4),
 )
 
 process.outputPath = cms.EndPath(process.write)
