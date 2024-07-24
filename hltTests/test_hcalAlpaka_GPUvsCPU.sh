@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 hltLabel="${1}"
 
@@ -8,3 +8,4 @@ outFile="${hltLabel}".root
 
 ls "${hltLabel}"_run*.root > "${hltLabel}".txt
 edmCopyPickMerge filePrepend=file: outputFile="${outFile}" inputFiles_load="${hltLabel}".txt
+rm -f "${hltLabel}".txt
