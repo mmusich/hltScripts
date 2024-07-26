@@ -11,18 +11,18 @@ if __name__ == '__main__':
     ###
     ### parameters
     ###
-    maxNumRuns = 20
+    maxNumRuns = -1
     numEventsPerJob = -1
 
     numThreadsPerJobs = 32
     numStreamsPerJobs = 24
 
-#    eosDirs = [f'/eos/cms/store/data/Run2024F/EphemeralHLTPhysics{foo}/RAW/v1/000/382/250/00000' for foo in range(7)]
-    eosDirs = [f'/eos/cms/store/group/tsg/STEAM/validations/CMSHLT-3281/check01']
+    eosDirs = [f'/eos/cms/store/data/Run2024F/EphemeralHLTPhysics{foo}/RAW/v1/000/382/250/00000' for foo in range(7)]
+#    eosDirs = [f'/eos/cms/store/group/tsg/STEAM/validations/CMSHLT-3281/check01']
 
     hltLabel = sys.argv[1]
 
-    hltMenu = '/dev/CMSSW_14_0_0/GRun/V153'
+    hltMenu = '/dev/CMSSW_14_0_0/GRun/V167'
 
     hltGetCmd = f"""
 https_proxy=http://cmsproxy.cms:3128/ \
@@ -33,7 +33,7 @@ hltGetConfiguration {hltMenu} \
   --no-prescale \
   --output minimal \
   --max-events {numEventsPerJob} \
-  --paths HLT_SingleEle8_v*,AlCa_PFJet40_*,HLT_UncorrectedJetE30_NoBPTX_v* \
+  --eras Run3 --l1-emulator uGT --l1 L1Menu_Collisions2024_v1_3_0_xml \
   > {hltLabel}.py && \
 cat <<@EOF >> {hltLabel}.py
 process.options.numberOfThreads = {numThreadsPerJobs}
@@ -54,23 +54,13 @@ process.hltOutputMinimal.outputCommands = [
 """
 
     hltCfgTypes = {
-        f'{hltLabel}_Legacy': f"""from {hltLabel} import cms, process
-
-process.options.accelerators = ['cpu']
-""",
-        f'{hltLabel}_CUDA': f"""from {hltLabel} import cms, process
-""",
         f'{hltLabel}_AlpakaSerialSync': f"""from {hltLabel} import cms, process
-
-from HLTrigger.Configuration.customizeHLTforAlpaka import customizeHLTforAlpaka
-process = customizeHLTforAlpaka(process)
 
 process.options.accelerators = ['cpu']
 """,
         f'{hltLabel}_AlpakaGPU': f"""from {hltLabel} import cms, process
 
-from HLTrigger.Configuration.customizeHLTforAlpaka import customizeHLTforAlpaka
-process = customizeHLTforAlpaka(process)
+process.options.accelerators = ['*']
 """,
     }
 
@@ -84,8 +74,9 @@ process = customizeHLTforAlpaka(process)
         os.remove('tmp.txt')
     inputFiles = sorted(list(set(inputFiles)))
 
-    count = 4
+    count = 2
     nRuns = len(inputFiles)
+    print(f'... {nRuns} input files found')
 
     print(f'Downloading HLT menu ({hltMenu}) from ConfDB ...')
     execmd(hltGetCmd)
