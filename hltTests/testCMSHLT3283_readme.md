@@ -1,4 +1,4 @@
-GPU-vs-CPU comparisons after the integrations of CMSHLT-3281.
+GPU-vs-CPU comparisons after the integration of CMSHLT-3281.
  - ~225k events of EphemeralHLTPhysics data from run-383631 (PU ~64).
  - Running 2 jobs with 32 threads and 24 streams each (full machine).
  - No HLT prescales applied.
@@ -37,3 +37,4 @@ hltDiff -j -c \
   -n /eos/cms/store/group/tsg/STEAM/validations/CMSHLT-3281/check03/output_CMSSW_14_0_12_MULTIARCHS/hlt240728_AlpakaGPU.root \
   -F /eos/cms/store/group/tsg/STEAM/validations/CMSHLT-3281/check03/hltDiff_x8664v3_AlpakaSerialSync_vs_AlpakaGPU \
    > /eos/cms/store/group/tsg/STEAM/validations/CMSHLT-3281/check03/hltDiff_x8664v3_AlpakaSerialSync_vs_AlpakaGPU.txt
+```
