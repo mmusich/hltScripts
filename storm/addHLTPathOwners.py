@@ -1,34 +1,54 @@
 #!/usr/bin/env python3
 import os
 import json
+import fnmatch
 
 pathOwnersDict = json.load(open(f'{os.environ["CMSSW_BASE"]}/src/HLTrigger/Configuration/scripts/utils/hltPathOwners.json'))
 
-pathNames = [
-  'HLT_DoubleMu3_DZ_PFMET50_PFMHT60_v',
-  'HLT_DoubleMu3_DZ_PFMET70_PFMHT70_v',
-  'HLT_DoubleMu3_DZ_PFMET90_PFMHT90_v',
-  'HLT_DoubleMu4_Mass3p8_DZ_PFHT350_v',
-  'HLT_Mu3er1p5_PFJet100er2p5_PFMET100_PFMHT100_IDTight_v',
-  'HLT_Mu3er1p5_PFJet100er2p5_PFMET80_PFMHT80_IDTight_v',
-  'HLT_Mu3er1p5_PFJet100er2p5_PFMET90_PFMHT90_IDTight_v',
-  'HLT_Mu3er1p5_PFJet100er2p5_PFMETNoMu100_PFMHTNoMu100_IDTight_v',
-  'HLT_Mu3er1p5_PFJet100er2p5_PFMETNoMu80_PFMHTNoMu80_IDTight_v',
-  'HLT_Mu3er1p5_PFJet100er2p5_PFMETNoMu90_PFMHTNoMu90_IDTight_v',
-  'HLT_TripleMu_5_3_3_Mass3p8_DCA_v',
-  'HLT_DoubleMu3_DCA_PFMET50_PFMHT60_Mass2p0_noDCA_v',
-  'HLT_DoubleMu3_DCA_PFMET50_PFMHT60_Mass2p0_v',
-  'HLT_DoubleMu3_DCA_PFMET50_PFMHT60_v',
+groupNames = [
+  'AlCa',
 ]
 
-for pathName in pathNames:
-    if pathName not in pathOwnersDict:
-        print(f'WARNING -- Path not found: {pathName}')
-    pathOwnersDict[pathName]['owners'] += ['EXO']
-    pathOwnersDict[pathName]['owners'] = sorted(list(set(pathOwnersDict[pathName]['owners'])))
+pathNames = [
+]
+
+#paths = []
+#for pathName in pathNames:
+#    for pathNameKey in pathOwnersDict:
+#        if fnmatch.fnmatch(pathNameKey, pathName):
+#            paths += [pathNameKey]
+#            for groupName in groupNames:
+#                pathOwnersDict[pathNameKey]['owners'] += [groupName]
+
+paths = []
+for pathNameKey in pathOwnersDict:
+    addGroups = 0
+    for group in [
+      'Tracker',
+      'ECAL',
+      'HCAL',
+      'RPC',
+      'GEM',
+      'PPS',
+      'L1T',
+    ]:
+      if group in pathOwnersDict[pathNameKey]['owners']:
+        addGroups += 1
+
+    if (addGroups > 0 or pathNameKey.startswith('AlCa_')) and (not pathNameKey.startswith('DQM_')):
+            paths += [pathNameKey]
+#            for groupName in groupNames:
+#               pathOwnersDict[pathNameKey]['owners'] += [groupName]
+
+paths = sorted(list(set(paths)))
+for path in paths:
+    print(path)
+
+for pathNameKey in pathOwnersDict:
+    pathOwnersDict[pathNameKey]['owners'] = sorted(list(set(pathOwnersDict[pathNameKey]['owners'])))
 
 #for pathName in pathOwnersDict:
-#    if 'EXO' in pathOwnersDict[pathName]['owners'] and pathName not in pathNames:
+#    if groupName in pathOwnersDict[pathName]['owners'] and pathName not in pathNames:
 #        print(f'WARNING -- Path not found: {pathName}')
 
 json.dump(pathOwnersDict, open(f'{os.environ["CMSSW_BASE"]}/src/HLTrigger/Configuration/scripts/utils/hltPathOwners.json', 'w'), sort_keys=True, indent=2)
