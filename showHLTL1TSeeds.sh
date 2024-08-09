@@ -13,7 +13,8 @@ retDict = {}
 for pathName in process.paths_():
   if not selectPaths(pathName):
     continue
-  retDict[pathName] = []
+  pathNameUnv = pathName[:pathName.rfind('_v')+2] if '_v' in pathName else pathName
+  retDict[pathNameUnv] = []
   path = getattr(process, pathName)
   for moduleName in path.moduleNames():
     module = getattr(process, moduleName)
@@ -21,15 +22,16 @@ for pathName in process.paths_():
       strippedL1TSeedStr = module.L1SeedsLogicalExpression.value()
       for specialStr in ['(', ')', ' OR', ' AND', ' NOT', 'OR ', 'AND ', 'NOT ']:
         strippedL1TSeedStr = strippedL1TSeedStr.replace(specialStr, ' ')
-      retDict[pathName] += sorted(list(set(strippedL1TSeedStr.split())))
+      retDict[pathNameUnv] += sorted(list(set(strippedL1TSeedStr.split())))
 
 for pathName in sorted(retDict.keys()):
   l1tSeeds = retDict[pathName]
   if l1tSeeds:
-    print(pathName)
+    print('\n', pathName)
     for l1tSeed in retDict[pathName]:
       if l1tSeed.startswith('L1_'):
         print('  ', l1tSeed)
       else:
-        raise Exception(l1tSeed)
+        print('  ', l1tSeed)
+#        raise Exception(l1tSeed)
 EOF
