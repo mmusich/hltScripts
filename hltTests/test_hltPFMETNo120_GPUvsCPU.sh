@@ -49,7 +49,7 @@ process.hltOutputMinimal.outputCommands = [
    'drop *',
    'keep *_TriggerResults_*_*',
 #   'keep *_hltHcalDigis_*_*',
-#   'keep *_hltHbhereco_*_*',
+   'keep *_hltHbhereco_*_*',
    'keep *_hltSiPixelRecHits_*_*',
    'keep *_hltPixelTracks_*_*',
    'keep *_hltPixelVertices_*_*',
