@@ -2,7 +2,13 @@
 
 [ $# -ge 1 ] || exit 1
 
-hltLabel="${1}"
+hltLabel=hlt
+outDir="${1}"
+
+[ ! -d "${outDir}" ] || exit 1
+
+mkdir -p "${outDir}"
+cd "${outDir}"
 
 inputFile=root://eoscms.cern.ch//eos/cms/store/group/tsg/STEAM/validations/GPUVsCPU/240814/raw_pickevents.root
 
@@ -32,7 +38,10 @@ for foo in ['HLTAnalyzerEndpath', 'dqmOutput', 'MessageLogger']:
 
 process.load('FWCore.MessageLogger.MessageLogger_cfi')
 
-#process.source.eventsToProcess = cms.untracked.VEventRange("382250:194:216051612")
+process.source.eventsToProcess = cms.untracked.VEventRange(
+    '381065:341:637243639',
+    '381065:317:581313290',
+)
 
 process.options.accelerators = ['cpu']
 
@@ -64,16 +73,16 @@ from ${hltLabel}_AlpakaSerialSync import cms, process
 
 process.options.accelerators = ['*']
 
-#process.hltEcalDigisSoA.alpaka.backend = 'serial_sync'
-#process.hltEcalUncalibRecHitSoA.alpaka.backend = 'serial_sync'
-#process.hltHbheRecHitSoA.alpaka.backend = 'serial_sync'
-#process.hltParticleFlowRecHitHBHESoA.alpaka.backend = 'serial_sync'
-#process.hltParticleFlowClusterHBHESoA.alpaka.backend = 'serial_sync'
-#process.hltOnlineBeamSpotDevice.alpaka.backend = 'serial_sync'
-#process.hltSiPixelClustersSoA.alpaka.backend = 'serial_sync'
-#process.hltSiPixelRecHitsSoA.alpaka.backend = 'serial_sync'
-#process.hltPixelTracksSoA.alpaka.backend = 'serial_sync'
-#process.hltPixelVerticesSoA.alpaka.backend = 'serial_sync'
+process.hltEcalDigisSoA.alpaka.backend = 'serial_sync'
+process.hltEcalUncalibRecHitSoA.alpaka.backend = 'serial_sync'
+#process.hltHbheRecoSoA.alpaka.backend = 'serial_sync'
+process.hltParticleFlowRecHitHBHESoA.alpaka.backend = 'serial_sync'
+process.hltParticleFlowClusterHBHESoA.alpaka.backend = 'serial_sync'
+process.hltOnlineBeamSpotDevice.alpaka.backend = 'serial_sync'
+process.hltSiPixelClustersSoA.alpaka.backend = 'serial_sync'
+process.hltSiPixelRecHitsSoA.alpaka.backend = 'serial_sync'
+process.hltPixelTracksSoA.alpaka.backend = 'serial_sync'
+process.hltPixelVerticesSoA.alpaka.backend = 'serial_sync'
 @EOF
 cmsRun "${hltLabel}"_AlpakaGPU.py &> "${hltLabel}"_AlpakaGPU.log
 mv output.root "${hltLabel}"_AlpakaGPU.root
