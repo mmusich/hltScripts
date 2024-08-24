@@ -4,6 +4,7 @@ import sys
 import csv
 import fnmatch
 import copy
+import math
 
 runNumber = 384910 # int(sys.argv[1])
 
@@ -22,6 +23,7 @@ l1tWhiteList = [
   'L1_DoubleMu0er2p0_SQ_OS_dEta_Max1p5',
   'L1_DoubleMu0er2p0_SQ_OS_dEta_Max1p6',
   'L1_CDC_SingleMu_3_er1p2_TOP120_DPHI2p618_3p142',
+  'L1_SingleJet60',
   'L1_SingleJet60_FWD2p5',
   'L1_SingleJet90',
   'L1_SingleJet90_FWD2p5',
@@ -32,7 +34,11 @@ l1tWhiteList = [
   'L1_DoubleJet120er2p5',
   'L1_Mu3_Jet60er2p5_dR_Max0p4',
   'L1_Mu3_Jet16er2p5_dR_Max0p4',
+  'L1_SingleMu3',
+  'L1_SingleMu5',
+  'L1_SingleMu7',
   'L1_SingleMu15_DQ',
+  'L1_SingleMu18',
   'L1_HTT120er',
   'L1_HTT160er',
   'L1_HTT200er',
@@ -80,6 +86,38 @@ hltPathsUsingZeroBias = [
   'HLT_EphemeralZeroBias_v',
 ]
 
+# The Sieve of Eratosthenes method of calculating the primes less than the limit
+def getPrimes(limit):
+    # The list of prime numbers
+    primes = []
+    # The boolean list of whether a number is prime
+    numbers = [True] * limit
+    # Loop all of the numbers in numbers starting from 2
+    for i in range(2, limit):
+        # If the number is prime
+        if numbers[i]:
+            # Add it onto the list of prime numbers
+            primes.append(i)
+            # Loop over all of the other factors in the list
+            for n in range(i ** 2, limit, i):
+                # Make them not prime
+                numbers[n] = False
+
+    # Return the list of prime numbers
+    return primes
+
+# https://stackoverflow.com/questions/58680930/closest-prime-number-in-python
+def closest_prime(number):
+    primes = getPrimes(number + 100)
+    maxDist = math.inf
+    ret = 0
+    for p in primes:
+        if abs(number - p) >= maxDist:
+            continue
+        maxDist = abs(number - p)
+        ret = p
+    return ret
+
 def getL1TPrescaleDict(filename):
     l1tDict = {}
     with open(filename, newline='') as l1tfile:
@@ -106,7 +144,7 @@ def writeL1TPrescaleCSV(psDict, filename):
 
         lines = []
         lines += [f'Default,{defaultColumn}'+','*len(colNames)]
-        lines += ['Bit,Algo Name,'+','.join(colNames)]
+        lines += ['Bit,Algo name,'+','.join(colNames)]
 
         l1tSeeds = [foo[0] for foo in sorted(psDict.items(), key=lambda x:x[1]['b'])]
 
@@ -193,7 +231,7 @@ def getHLTPrescaleDict(runNumber, pattern='*'):
 
     return ret, ret2
 
-l1tPS = getL1TPrescaleDict('l1ps.csv')
+l1tPS = getL1TPrescaleDict('l1tPS_orig.csv')
 l1tColNames = list(l1tPS['L1_AlwaysTrue']['p'].keys())
 
 hltPS, hltSeeds = getHLTPrescaleDict(runNumber)
@@ -218,7 +256,13 @@ for l1tSeed in l1tPS:
     if l1t_ps == 1:
         continue
 
-    l1tPS_new[l1tSeed]['p'][defaultColumn] *= magicFactor
+    ps_val = l1tPS_new[l1tSeed]['p'][defaultColumn]
+    ps_val *= magicFactor
+
+    if l1tSeed in ['L1_ZeroBias', 'L1_ZeroBias_copy']:
+        ps_val = closest_prime(ps_val)
+
+    l1tPS_new[l1tSeed]['p'][defaultColumn] = ps_val
 
     l1tSeedsChanged += [l1tSeed]
 
@@ -229,7 +273,9 @@ for l1tSeed in l1tPS:
         if colName == defaultColumn or not colName.startswith('1p'):
             continue
 
-        l1tPS_new[l1tSeed]['p'][colName] /= magicFactor
+        new_ps = l1tPS_new[l1tSeed]['p'][colName]
+        new_ps = closest_prime(round(new_ps / 2))
+        l1tPS_new[l1tSeed]['p'][colName] = new_ps
 
 l1tSeedsChanged = sorted(list(set(l1tSeedsChanged)))
 
