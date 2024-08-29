@@ -1303,6 +1303,23 @@ void allTracks(TString alias){
   plotvar("log10(abs("+bObj+".covBetaBeta()))");
 }
 
+void allTrajectorySeeds(TString alias){
+  alias+=".obj";
+  TString bObj = "TrajectorySeeds_"+alias;
+  if (! checkBranchOR(bObj, true)) return;
+  plotvar(bObj+"@.size()");
+  plotvar("log10("+bObj+".nHits())");
+}
+
+void allTrackCandidates(TString alias){
+  alias+=".obj";
+  TString bObj = "TrackCandidates_"+alias;
+  if (! checkBranchOR(bObj, true)) return;
+  plotvar(bObj+"@.size()");
+  plotvar("log10("+bObj+".nRecHits())");
+}
+
+
 void generalTrack(TString var){
   plotTrack("hltPixelTracksPPOnAA",var);
   plotTrack("hltIterL3OIMuCtfWithMaterialTracksPPOnAA",var);
@@ -2602,7 +2619,8 @@ void validateEvents(TString step, TString file, TString refFile, TString r="RECO
       allTracks("hltL3MuonsIterL3OIPPOnAA_L2Seeded__"+recoS);
       allTracks("hltIterL3GlbMuonPPOnAA_L2Seeded__"+recoS);
       allTracks("hltL3MuonsIterL3IOPPOnAA__"+recoS);
-
+      allTracks("hltPixelTracksInRegionL1PPOnAA__"+recoS);
+      
       trackExtras("hltIterL3MuonAndMuonFromL1MergedPPOnAA_");
       trackExtras("hltIter0IterL3FromL1MuonCtfWithMaterialTracksPPOnAA_");
       trackExtras("hltIter0IterL3FromL1MuonTrackSelectionHighPurityPPOnAA_");
@@ -2620,6 +2638,10 @@ void validateEvents(TString step, TString file, TString refFile, TString r="RECO
       trackExtras("hltL3MuonsIterL3IOPPOnAA_L2Seeded_");
       trackExtras("hltL3MuonsIterL3OIPPOnAA_L2Seeded_");
       trackExtras("hltIterL3GlbMuonPPOnAA_L2Seeded_");
+
+      allTrajectorySeeds("hltIter0IterL3FromL1MuonPixelSeedsFromPixelTracksPPOnAA__"+recoS);
+      allTrajectorySeeds("hltIter0IterL3FromL1MuonPixelSeedsFromPixelTracksFilteredPPOnAA__"+recoS);
+      allTrackCandidates("hltIter0IterL3FromL1MuonCkfTrackCandidatesPPOnAA__"+recoS);      
     }
       
     if ((stepContainsNU(step, "all") || stepContainsNU(step, "dt")) && !stepContainsNU(step, "cosmic") ){
@@ -3175,7 +3197,29 @@ void validateEvents(TString step, TString file, TString refFile, TString r="RECO
         plotvar(tbr+".pt()",c);
         plotvar(tbr+".p()",c);
       }
+      
+      // hltIterL3MuonsPPOnAA
+      tbr="recoMuons_hltIterL3MuonsPPOnAA__"+recoS+".obj";
+      if (checkBranchOR(tbr, true)){
+        TString c=tbr+".isTrackerMuon()";
+        plotvar(tbr+"@.size()",c);
+        plotvar(tbr+".eta()",c);
+        plotvar(tbr+".phi()",c);
+        plotvar(tbr+".pt()",c);
+        plotvar(tbr+".p()",c);
+      }
 
+      // hltIterL3MuonsNoIDPPOnAA
+      tbr="recoMuons_hltIterL3MuonsNoIDPPOnAA__"+recoS+".obj";
+      if (checkBranchOR(tbr, true)){
+        TString c=tbr+".isTrackerMuon()";
+        plotvar(tbr+"@.size()",c);
+        plotvar(tbr+".eta()",c);
+        plotvar(tbr+".phi()",c);
+        plotvar(tbr+".pt()",c);
+        plotvar(tbr+".p()",c);
+      }
+      
       tbr="patMuons_slimmedMuons__"+recoS+".obj";
       if (checkBranchOR(tbr, true)){
         TString c=tbr+".isTrackerMuon()";
