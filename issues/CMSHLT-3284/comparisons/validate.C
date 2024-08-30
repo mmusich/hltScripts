@@ -300,7 +300,7 @@ PlotStats plotvar(TString v,TString cut="", bool tryCatch = false){
   else
     {
       if (RemoveIdentical){
-	//	  std::cout<<"remove identical"<<std::endl;
+	std::cout<<"remove identical"<<std::endl;
 	delete c;
       }
     }
@@ -1308,7 +1308,9 @@ void allTrajectorySeeds(TString alias){
   TString bObj = "TrajectorySeeds_"+alias;
   if (! checkBranchOR(bObj, true)) return;
   plotvar(bObj+"@.size()");
-  plotvar("log10("+bObj+".nHits())");
+  plotvar(bObj+".nHits()");
+  plotvar("log10("+bObj+".startingState().pt())");
+  plotvar(bObj+".startingState().surfaceSide()");
 }
 
 void allTrackCandidates(TString alias){
@@ -1319,6 +1321,21 @@ void allTrackCandidates(TString alias){
   plotvar("log10("+bObj+".nRecHits())");
 }
 
+void allBeamSpot(TString alias){
+  alias+=".obj";
+  TString bObj = "recoBeamSpot_"+alias;
+  if (! checkBranchOR(bObj, true)) return;
+  plotvar(bObj+".type()");
+  plotvar(bObj+".x0()");
+  plotvar(bObj+".x0Error()");
+  plotvar(bObj+".y0()");
+  plotvar(bObj+".y0Error()");
+  plotvar(bObj+".z0()");
+  plotvar(bObj+".z0Error()");
+  plotvar(bObj+".sigmaZ()");
+  plotvar(bObj+".dxdz()");
+  plotvar(bObj+".dydz()");
+}
 
 void generalTrack(TString var){
   plotTrack("hltPixelTracksPPOnAA",var);
@@ -2641,7 +2658,9 @@ void validateEvents(TString step, TString file, TString refFile, TString r="RECO
 
       allTrajectorySeeds("hltIter0IterL3FromL1MuonPixelSeedsFromPixelTracksPPOnAA__"+recoS);
       allTrajectorySeeds("hltIter0IterL3FromL1MuonPixelSeedsFromPixelTracksFilteredPPOnAA__"+recoS);
-      allTrackCandidates("hltIter0IterL3FromL1MuonCkfTrackCandidatesPPOnAA__"+recoS);      
+      allTrackCandidates("hltIter0IterL3FromL1MuonCkfTrackCandidatesPPOnAA__"+recoS);
+
+      allBeamSpot("hltOnlineBeamSpot__"+recoS);
     }
       
     if ((stepContainsNU(step, "all") || stepContainsNU(step, "dt")) && !stepContainsNU(step, "cosmic") ){

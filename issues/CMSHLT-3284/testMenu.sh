@@ -8,7 +8,7 @@ run(){
     --data \
     --unprescale \
     --output minimal \
-    --max-events 300 \
+    --max-events 1000 \
     --eras Run3_2024 --l1-emulator uGT --l1 L1Menu_CollisionsHeavyIons2023_v1_1_5_xml \
     --paths HLT_HIL3DoubleMu0_M2to4p5_Open_v* \
     --input root://eoscms.cern.ch//eos/cms/store/user/cmsbuild/store/data/Run2023D/EphemeralHLTPhysics0/RAW/v1/000/370/293/00000/2ef73d2a-1fb7-4dac-9961-149525f9e887.root \
@@ -20,21 +20,26 @@ process.options.numberOfThreads = 1
 process.options.numberOfStreams = 0
 
 process.hltOutputMinimal.outputCommands = [
+  'keep *_hltOnlineBeamSpot*_*_*',
   'keep *_hltSiPixelClustersPPOnAA_*_*',
   'keep *_hltPixelTracksPPOnAA_*_*',
   'keep *_hltPixelVerticesPPOnAA_*_*',
   'keep *_hlt*Muon*_*_*',
   'keep *_hlt*L2*_*_*',
   'keep *_hlt*L3*_*_*',
+  'keep *_hltPixelTracksInRegionL1PPOnAA_*_*',
+  'keep *_hltIterL3FromL1MuonPixelTracksTrackingRegionsPPOnAA_*_*',
   'keep *_TriggerResults_*_*'
 ]
 
 if hasattr(process, 'hltPixelConsumerGPUPPOnAA'):
-    process.hltPixelConsumerGPUPPOnAA.eventProducts += [
-        'hltSiPixelClustersPPOnAA',
-        'hltPixelTracksPPOnAA',
-        'hltPixelVerticesPPOnAA',
-    ]
+   process.hltPixelConsumerGPUPPOnAA.eventProducts += [
+       'hltSiPixelClustersPPOnAA',
+       'hltPixelTracksPPOnAA',
+       'hltPixelVerticesPPOnAA',
+       'hltPixelTracksInRegionL1PPOnAA',
+       'hltIterL3FromL1MuonPixelTracksTrackingRegionsPPOnAA'
+   ]
 
 del process.MessageLogger
 process.load('FWCore.MessageLogger.MessageLogger_cfi')
