@@ -47,7 +47,9 @@ datasets=(
 
 # /store/data/Run2024A/Cosmics/RAW/v1/000/378/483/00000/e51ad2ec-686a-4246-b879-0ff3add6bc29.root
 
- /store/data/Run2024E/ParkingSingleMuon4/RAW/v1/000/381/443/00000/95d48fcb-0633-415c-a5cf-f2caeebab628.root
+# /store/data/Run2024E/ParkingSingleMuon4/RAW/v1/000/381/443/00000/95d48fcb-0633-415c-a5cf-f2caeebab628.root
+
+/TestHLTPhysicsA0/Run2024J-v1/RAW#856a00ec-dcf6-4816-addc-82b1570bab67
 )
 
 #    'rse_type=DISK&cms_type=real\tier=3\tier=0' \
@@ -58,11 +60,22 @@ datasets=(
 export RUCIO_ACCOUNT="t2_ch_cern_local_users"
 
 for dataset in "${datasets[@]}"; do
+
+#  rucio add-rule \
+#    cms:"${dataset}" \
+#    1 \
+#    'rse_type=DISK&cms_type=real\tier=3\tier=0' \
+#    --lifetime 1555200 \
+#    --activity "User AutoApprove" \
+#    --ask-approval \
+#    --grouping 'ALL' \
+#    --comment "Trigger Studies Group (HLT)"
+
   rucio add-rule \
     cms:"${dataset}" \
     1 \
     T2_CH_CERN \
-    --lifetime 15552000 \
+    --lifetime 1555200 \
     --activity "User AutoApprove" \
     --ask-approval \
     --comment "Trigger Studies Group (HLT)"
