@@ -20,26 +20,43 @@ def load_modules(directory):
     # Define regular expression patterns to match cms.EDProducer and cms.EDFilter definitions
     edproducer_pattern = re.compile(r"cms\.EDProducer\(['\"]([^'\"]+)['\"]")
     edfilter_pattern = re.compile(r"cms\.EDFilter\(['\"]([^'\"]+)['\"]")
+    edanalyzer_pattern = re.compile(r"cms\.EDAnalyzer\(['\"]([^'\"]+)['\"]")
 
     # Traverse through all folders and subfolders
     for root, dirs, files in os.walk(base_directory):
         for file in files:
             # Check if the file has a .py extension
-            if file.endswith('.py'):
+            if file.endswith('_cfi.py'):
                 # Construct the full path to the file
                 file_path = os.path.join(root, file)
 
-                # Read the content of the file
+                # Read the content of the _cfi.py file
                 with open(file_path, 'r') as f:
                     content = f.read()
 
-                # Find matches using the regular expression patterns
-                edproducer_matches = edproducer_pattern.findall(content)
-                edfilter_matches = edfilter_pattern.findall(content)
+                # Look for the `from .<module> import <class>` pattern
+                match = re.search(r"from \.(\w+) import", content)
+                if match:
+                    included_file = match.group(1) + ".py"  # Get the included file name
+                    included_file_path = os.path.join(root, included_file)  # Construct its path
 
-                # Append the matches to the loaded_modules dictionary
-                loaded_modules[file].extend(edproducer_matches)
-                loaded_modules[file].extend(edfilter_matches)
+                    # Check if the included file exists
+                    if os.path.exists(included_file_path):
+                        with open(included_file_path, 'r') as included_file_obj:
+                            included_content = included_file_obj.read()
+                            #print(included_file_path, '\n', included_content)
+                    else:
+                        print(f"Included file {included_file} not found for {file_path}")
+
+                    # Find matches using the regular expression patterns
+                    edproducer_matches = edproducer_pattern.findall(included_content)
+                    edfilter_matches = edfilter_pattern.findall(included_content)
+                    edanalyzer_matches = edanalyzer_pattern.findall(included_content)
+
+                    # Append the matches to the loaded_modules dictionary
+                    loaded_modules[file].extend(edproducer_matches)
+                    loaded_modules[file].extend(edfilter_matches)
+                    loaded_modules[file].extend(edanalyzer_matches)
 
     # Create the reverse dictionary
     reverse_loaded_modules = defaultdict(list)
@@ -76,7 +93,7 @@ if os.path.exists(file_path):
         ed_objects = [
             name
             for name, obj in fragment_members
-            if isinstance(obj, (hlt_module.cms.EDFilter, hlt_module.cms.EDProducer))
+            if isinstance(obj, (hlt_module.cms.EDFilter, hlt_module.cms.EDProducer, hlt_module.cms.EDAnalyzer))
         ]
 
         # Extract the class names from the repr of the objects
@@ -95,7 +112,7 @@ if os.path.exists(file_path):
         unique_class_names = set(filter(None, class_names))
 
         # Print the list of unique cms.EDFilter and cms.EDProducer class names
-        #print("List of unique cms.EDFilter and cms.EDProducer class names in 'fragment':")
+        #print("List of unique cms.EDFilter, cms.EDProducer and cms.EDAnalyzer class names in 'fragment':")
         #for class_name in unique_class_names:
         #    print(f"- {class_name}")
 
