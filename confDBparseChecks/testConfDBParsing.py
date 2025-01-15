@@ -70,7 +70,7 @@ def load_modules(directory):
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the path to the python directory
-python_directory = os.path.join(current_directory, '..', 'python')
+python_directory = os.path.join(os.environ['CMSSW_RELEASE_BASE'], 'src', 'HLTrigger','Configuration','python')
 
 # Construct the path to the file
 file_path = os.path.join(python_directory, 'HLT_FULL_cff.py')
@@ -110,6 +110,7 @@ if os.path.exists(file_path):
     
         # Remove duplicates and blanks using set
         unique_class_names = set(filter(None, class_names))
+        sorted_class_names = sorted(unique_class_names)
 
         # Print the list of unique cms.EDFilter and cms.EDProducer class names
         #print("List of unique cms.EDFilter, cms.EDProducer and cms.EDAnalyzer class names in 'fragment':")
@@ -128,7 +129,7 @@ if os.path.exists(file_path):
         #print(unique_class_names)
         
         # Check if each unique class name is in any key of the reverse dictionary
-        for class_name in unique_class_names:
+        for class_name in sorted_class_names:
             if(class_name in  keys_list):
                 pass
                 #print(GREEN + f"{class_name} is found in the loaded modules." + RESET)
