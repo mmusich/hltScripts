@@ -11,6 +11,43 @@ from collections import defaultdict
 from pprint import pprint
 import subprocess
 
+def create_cmssw_config():
+    # Define the folder and filenames
+    folder_name = "hlt_test_configs"
+    config_filename = os.path.join(folder_name, "phase2_cfg.py")
+    dump_filename = os.path.join(folder_name, "Phase2_dump.py")
+
+    # Create the folder if it doesn't exist
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+        print(f"Created folder: {folder_name}")
+
+    # Write the CMSSW configuration file
+    config_content = """
+import FWCore.ParameterSet.Config as cms
+process = cms.Process("HLT")
+process.load("HLTrigger.Configuration.HLT_75e33_cff")
+    """
+
+    with open(config_filename, "w") as config_file:
+        config_file.write(config_content)
+
+    print(f"Configuration file created: {config_filename}")
+
+    # Run edmConfigDump and save the output
+    try:
+        with open(dump_filename, "w") as dump_file:
+            subprocess.run(
+                ["edmConfigDump", config_filename],
+                stdout=dump_file,
+                check=True
+            )
+        print(f"Configuration dump saved to: {dump_filename}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while running edmConfigDump: {e}")
+    except FileNotFoundError:
+        print("The edmConfigDump command was not found. Ensure CMSSW is set up correctly.")
+
 def run_hlt_phase2_upgrade():
     try:
         # Execute the command and capture the output
@@ -41,6 +78,8 @@ def load_modules(directory):
     edproducer_pattern = re.compile(r"cms\.EDProducer\(['\"]([^'\"]+)['\"]")
     edfilter_pattern = re.compile(r"cms\.EDFilter\(['\"]([^'\"]+)['\"]")
     edanalyzer_pattern = re.compile(r"cms\.EDAnalyzer\(['\"]([^'\"]+)['\"]")
+    esproducer_pattern = re.compile(r"cms\.ESProducer\(['\"]([^'\"]+)['\"]")
+    essource_pattern = re.compile(r"cms\.ESSource\(['\"]([^'\"]+)['\"]")
 
     # Traverse through all folders and subfolders
     for root, dirs, files in os.walk(base_directory):
@@ -72,11 +111,15 @@ def load_modules(directory):
                     edproducer_matches = edproducer_pattern.findall(included_content)
                     edfilter_matches = edfilter_pattern.findall(included_content)
                     edanalyzer_matches = edanalyzer_pattern.findall(included_content)
+                    esproducer_matches = esproducer_pattern.findall(included_content)
+                    essource_matches = essource_pattern.findall(included_content)
 
                     # Append the matches to the loaded_modules dictionary
                     loaded_modules[file].extend(edproducer_matches)
                     loaded_modules[file].extend(edfilter_matches)
                     loaded_modules[file].extend(edanalyzer_matches)
+                    loaded_modules[file].extend(esproducer_matches)
+                    loaded_modules[file].extend(essource_matches)
 
     # Create the reverse dictionary
     reverse_loaded_modules = defaultdict(list)
@@ -87,7 +130,8 @@ def load_modules(directory):
     return dict(reverse_loaded_modules)
 
 # prepare the area
-run_hlt_phase2_upgrade()
+create_cmssw_config()
+#run_hlt_phase2_upgrade()
 
 # Assuming you are in the 'test' directory
 current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -116,7 +160,7 @@ if os.path.exists(file_path):
         ed_objects = [
             name
             for name, obj in fragment_members
-            if isinstance(obj, (hlt_module.cms.EDFilter, hlt_module.cms.EDProducer, hlt_module.cms.EDAnalyzer))
+            if isinstance(obj, (hlt_module.cms.EDFilter, hlt_module.cms.EDProducer, hlt_module.cms.EDAnalyzer, hlt_module.cms.ESProducer, hlt_module.cms.ESSource))
         ]
 
         # Extract the class names from the repr of the objects

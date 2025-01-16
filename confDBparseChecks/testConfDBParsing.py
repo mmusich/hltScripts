@@ -21,6 +21,8 @@ def load_modules(directory):
     edproducer_pattern = re.compile(r"cms\.EDProducer\(['\"]([^'\"]+)['\"]")
     edfilter_pattern = re.compile(r"cms\.EDFilter\(['\"]([^'\"]+)['\"]")
     edanalyzer_pattern = re.compile(r"cms\.EDAnalyzer\(['\"]([^'\"]+)['\"]")
+    esproducer_pattern = re.compile(r"cms\.ESProducer\(['\"]([^'\"]+)['\"]")
+    essource_pattern = re.compile(r"cms\.ESSource\(['\"]([^'\"]+)['\"]")
 
     # Traverse through all folders and subfolders
     for root, dirs, files in os.walk(base_directory):
@@ -52,11 +54,15 @@ def load_modules(directory):
                     edproducer_matches = edproducer_pattern.findall(included_content)
                     edfilter_matches = edfilter_pattern.findall(included_content)
                     edanalyzer_matches = edanalyzer_pattern.findall(included_content)
+                    esproducer_matches = esproducer_pattern.findall(included_content)
+                    essource_matches = essource_pattern.findall(included_content)
 
                     # Append the matches to the loaded_modules dictionary
                     loaded_modules[file].extend(edproducer_matches)
                     loaded_modules[file].extend(edfilter_matches)
                     loaded_modules[file].extend(edanalyzer_matches)
+                    loaded_modules[file].extend(esproducer_matches)
+                    loaded_modules[file].extend(essource_matches)
 
     # Create the reverse dictionary
     reverse_loaded_modules = defaultdict(list)
@@ -93,7 +99,7 @@ if os.path.exists(file_path):
         ed_objects = [
             name
             for name, obj in fragment_members
-            if isinstance(obj, (hlt_module.cms.EDFilter, hlt_module.cms.EDProducer, hlt_module.cms.EDAnalyzer))
+            if isinstance(obj, (hlt_module.cms.EDFilter, hlt_module.cms.EDProducer, hlt_module.cms.EDAnalyzer, hlt_module.cms.ESProducer, hlt_module.cms.ESSource))
         ]
 
         # Extract the class names from the repr of the objects
