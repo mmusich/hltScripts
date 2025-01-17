@@ -11,6 +11,12 @@ from collections import defaultdict
 from pprint import pprint
 import subprocess
 
+def get_scram_arch():
+    scram_arch = os.getenv("SCRAM_ARCH")
+    if scram_arch is None:
+        raise EnvironmentError("SCRAM_ARCH is not set. Please ensure the CMSSW environment is initialized with cmsenv.")
+    return scram_arch
+
 def create_cmssw_config():
     # Define the folder and filenames
     folder_name = "hlt_test_configs"
@@ -184,8 +190,14 @@ if os.path.exists(file_path):
         #for class_name in unique_class_names:
         #    print(f"- {class_name}")
 
-        # Load modules and create the reverse dictionary
-        reverse_loaded_modules = load_modules('cfipython/el9_amd64_gcc12/')
+         # Load modules and create the reverse dictionary
+        try:
+            scram_arch = get_scram_arch()
+            print(f"Detected SCRAM_ARCH: {scram_arch}")
+            # Use the architecture in your function call
+            reverse_loaded_modules = load_modules(f'cfipython/{scram_arch}/')
+        except Exception as e:
+            print(f"Error: {e}")
 
         #pprint(dict(reverse_loaded_modules))
 
