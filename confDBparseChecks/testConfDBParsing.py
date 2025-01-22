@@ -17,6 +17,74 @@ def get_scram_arch():
     return scram_arch
 
 def load_modules(directory):
+    # Specify the base directories
+    release_base_directory = os.path.join(os.environ['CMSSW_RELEASE_BASE'], directory)
+    base_directory = os.path.join(os.environ['CMSSW_BASE'], directory)
+
+    # Dictionary to store the loaded modules
+    loaded_modules = defaultdict(list)
+
+    # Define regular expression patterns to match cms.EDProducer and cms.EDFilter definitions
+    edproducer_pattern = re.compile(r"cms\.EDProducer\(['\"]([^'\"]+)['\"]")
+    edfilter_pattern = re.compile(r"cms\.EDFilter\(['\"]([^'\"]+)['\"]")
+    edanalyzer_pattern = re.compile(r"cms\.EDAnalyzer\(['\"]([^'\"]+)['\"]")
+    esproducer_pattern = re.compile(r"cms\.ESProducer\(['\"]([^'\"]+)['\"]")
+    essource_pattern = re.compile(r"cms\.ESSource\(['\"]([^'\"]+)['\"]")
+
+    # Helper function to process a given directory
+    def process_directory(base_directory):
+        for root, dirs, files in os.walk(base_directory):
+            for file in files:
+                # Check if the file has a .py extension
+                if file.endswith('_cfi.py'):
+                    # Construct the full path to the file
+                    file_path = os.path.join(root, file)
+
+                    # Read the content of the _cfi.py file
+                    with open(file_path, 'r') as f:
+                        content = f.read()
+
+                    # Look for the `from .<module> import <class>` pattern
+                    match = re.search(r"from \.(\w+) import", content)
+                    if match:
+                        included_file = match.group(1) + ".py"  # Get the included file name
+                        included_file_path = os.path.join(root, included_file)  # Construct its path
+
+                        # Check if the included file exists
+                        if os.path.exists(included_file_path):
+                            with open(included_file_path, 'r') as included_file_obj:
+                                included_content = included_file_obj.read()
+                        else:
+                            print(f"Included file {included_file} not found for {file_path}")
+                            continue
+
+                        # Find matches using the regular expression patterns
+                        edproducer_matches = edproducer_pattern.findall(included_content)
+                        edfilter_matches = edfilter_pattern.findall(included_content)
+                        edanalyzer_matches = edanalyzer_pattern.findall(included_content)
+                        esproducer_matches = esproducer_pattern.findall(included_content)
+                        essource_matches = essource_pattern.findall(included_content)
+
+                        # Append the matches to the loaded_modules dictionary
+                        loaded_modules[file].extend(edproducer_matches)
+                        loaded_modules[file].extend(edfilter_matches)
+                        loaded_modules[file].extend(edanalyzer_matches)
+                        loaded_modules[file].extend(esproducer_matches)
+                        loaded_modules[file].extend(essource_matches)
+
+    # Process both directories
+    process_directory(release_base_directory)
+    process_directory(base_directory)
+
+    # Create the reverse dictionary
+    reverse_loaded_modules = defaultdict(list)
+    for file, classes in loaded_modules.items():
+        for cls in classes:
+            reverse_loaded_modules[cls].append(file)
+
+    return dict(reverse_loaded_modules)
+
+def load_modules_only_base(directory):
     # Specify the base directory
     base_directory = os.path.join(os.environ['CMSSW_RELEASE_BASE'], directory)
 
