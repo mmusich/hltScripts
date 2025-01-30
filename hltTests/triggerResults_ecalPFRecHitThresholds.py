@@ -11,8 +11,8 @@ if __name__ == '__main__':
     ###
     ### parameters
     ###
-    minNumRuns = 0
-    maxNumRuns = 10
+    minRunNumber = 0
+    maxRunNumber = 24
     numEventsPerJob = -1
 
     numThreadsPerJobs = 32
@@ -99,9 +99,9 @@ process.GlobalTag.toGet.append(
             hltCfgFile.write(f'{hltCfgTypes[hltCfgLabel]}\n')
 
     for run_i in range(nRuns):
-        if run_i < minNumRuns:
+        if minRunNumber != None and run_i < minRunNumber:
             continue
-        if maxNumRuns >= 0 and run_i >= maxNumRuns:
+        if maxRunNumber != None and run_i > maxRunNumber:
             continue
 
         runLabel = f'run{run_i:04d}'
