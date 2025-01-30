@@ -128,6 +128,21 @@ def load_modules(directory):
                         loaded_modules[file].extend(edanalyzer_matches)
                         loaded_modules[file].extend(esproducer_matches)
                         loaded_modules[file].extend(essource_matches)
+                    else:
+                        # This is the case in which the definition is directly implemented in the cfi file
+                        # Find matches using the regular expression patterns
+                        edproducer_matches = edproducer_pattern.findall(content)
+                        edfilter_matches = edfilter_pattern.findall(content)
+                        edanalyzer_matches = edanalyzer_pattern.findall(content)
+                        esproducer_matches = esproducer_pattern.findall(content)
+                        essource_matches = essource_pattern.findall(content)
+
+                        # Append the matches to the loaded_modules dictionary
+                        loaded_modules[file].extend(edproducer_matches)
+                        loaded_modules[file].extend(edfilter_matches)
+                        loaded_modules[file].extend(edanalyzer_matches)
+                        loaded_modules[file].extend(esproducer_matches)
+                        loaded_modules[file].extend(essource_matches)
 
     # Process both directories
     process_directory(release_base_directory)
@@ -245,7 +260,7 @@ if os.path.exists(file_path):
 
         # Extract the class names from the repr of the objects and clean them up
         class_names = [
-            repr(getattr(fragment, obj)).split('(')[1].split(' ')[0].strip().replace(',', '').replace('"','')
+            repr(getattr(fragment, obj)).split('(')[1].split(' ')[0].strip().replace(',', '').replace('"','').replace(')','')
             for obj in ed_objects
         ]
     
