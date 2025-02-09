@@ -9,12 +9,69 @@ import re
 import inspect
 from collections import defaultdict
 from pprint import pprint
+import subprocess
 
 def get_scram_arch():
     scram_arch = os.getenv("SCRAM_ARCH")
     if scram_arch is None:
         raise EnvironmentError("SCRAM_ARCH is not set. Please ensure the CMSSW environment is initialized with cmsenv.")
     return scram_arch
+
+def create_cmssw_config():
+    # Define the folder and filenames
+    folder_name = "hlt_test_configs"
+    config_filename = os.path.join(folder_name, "phase2_cfg.py")
+    dump_filename = os.path.join(folder_name, "Phase2_dump.py")
+
+    # Create the folder if it doesn't exist
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+        print(f"Created folder: {folder_name}")
+
+    # Write the CMSSW configuration file
+    config_content = """
+import FWCore.ParameterSet.Config as cms
+process = cms.Process("HLT")
+process.load("HLTrigger.Configuration.HLT_75e33_cff")
+    """
+
+    with open(config_filename, "w") as config_file:
+        config_file.write(config_content)
+
+    print(f"Configuration file created: {config_filename}")
+
+    # Run edmConfigDump and save the output
+    try:
+        with open(dump_filename, "w") as dump_file:
+            subprocess.run(
+                ["edmConfigDump", config_filename],
+                stdout=dump_file,
+                check=True
+            )
+        print(f"Configuration dump saved to: {dump_filename}")
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while running edmConfigDump: {e}")
+    except FileNotFoundError:
+        print("The edmConfigDump command was not found. Ensure CMSSW is set up correctly.")
+
+def run_hlt_phase2_upgrade():
+    try:
+        # Execute the command and capture the output
+        result = subprocess.run(
+            ["hltPhase2UpgradeIntegrationTests", "--dryRun"],
+            check=True,  # Raises an exception if the command fails
+            text=True,   # Ensures the output is captured as a string
+            capture_output=True  # Captures both stdout and stderr
+        )
+        
+        # Print the command output
+        print("Command Output:")
+        print(result.stdout)
+        
+    except subprocess.CalledProcessError as e:
+        # Print the error message if the command fails
+        print("Command failed with error:")
+        print(e.stderr)
 
 def load_modules(directory):
     # Specify the base directories
@@ -161,25 +218,29 @@ def load_modules_only_base(directory):
 
     return dict(reverse_loaded_modules)
 
+# prepare the area
+create_cmssw_config()
+#run_hlt_phase2_upgrade()
+
 # Assuming you are in the 'test' directory
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the path to the python directory
-python_directory = os.path.join(os.environ['CMSSW_RELEASE_BASE'], 'src', 'HLTrigger','Configuration','python')
+python_directory = os.path.join(current_directory, 'hlt_test_configs')
 
 # Construct the path to the file
-file_path = os.path.join(python_directory, 'HLT_FULL_cff.py')
+file_path = os.path.join(python_directory, 'Phase2_dump.py')
 
 # Check if the file exists
 if os.path.exists(file_path):
     # Load the module dynamically
-    spec = importlib.util.spec_from_file_location('HLT_FULL_cff', file_path)
+    spec = importlib.util.spec_from_file_location('Phase2_dump', file_path)
     hlt_module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(hlt_module)
 
     # Check if 'fragment' attribute exists in the module
-    if hasattr(hlt_module, 'fragment'):
-        fragment = getattr(hlt_module, 'fragment')
+    if hasattr(hlt_module, 'process'):
+        fragment = getattr(hlt_module, 'process')
 
         # Get all members of the 'fragment'
         fragment_members = inspect.getmembers(fragment)
@@ -206,13 +267,13 @@ if os.path.exists(file_path):
         # Remove duplicates and blanks using set
         unique_class_names = set(filter(None, class_names))
         sorted_class_names = sorted(unique_class_names)
-
+        
         # Print the list of unique cms.EDFilter and cms.EDProducer class names
         #print("List of unique cms.EDFilter, cms.EDProducer and cms.EDAnalyzer class names in 'fragment':")
         #for class_name in unique_class_names:
         #    print(f"- {class_name}")
 
-        # Load modules and create the reverse dictionary
+         # Load modules and create the reverse dictionary
         try:
             scram_arch = get_scram_arch()
             print(f"Detected SCRAM_ARCH: {scram_arch}")
