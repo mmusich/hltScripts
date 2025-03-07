@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 import os
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_14_2_0/HLT > HLT.py')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/HLT > HLT.py && sleep 2')
 from HLT import cms,process as hlt
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_14_2_0/GRun > GRun.py')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/GRun > GRun.py')
 from GRun import process as grun
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_14_2_0/HIon > HIon.py')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/HIon > HIon.py')
 from HIon import process as hion
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_14_2_0/PRef > PRef.py')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/PRef > PRef.py')
 from PRef import process as pref
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_14_2_0/PIon > PIon.py')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/PIon > PIon.py')
 from PIon import process as pion
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_14_2_0/Special > Spec.py')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/Special > Spec.py')
 from Spec import process as spec
 
 paths = []
