@@ -36,7 +36,8 @@ hltfrac_m1_hltsco = 0.92
 evtsize_repacking_factor = 0.85
 
 # HLT rate of sum(prompt) at peak lumi [kHz]
-peak_hlt_prompt = 3.0
+#  0.10 kHz accounts for contingency
+peak_hlt_prompt = 3.1 + 0.1
 
 # HLT rate of single-muon parking at peak lumi [kHz]
 peak_hlt_parkin_SingleMu = 1.4 * park_m1sfac
