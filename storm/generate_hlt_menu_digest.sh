@@ -140,8 +140,8 @@ for i in "${!releases[@]}"; do
 	    # Skip if no files are found
 	    [[ -e "$hlt_file" ]] || continue
 
-	    # Check if it's a file (not a directory) and does not contain '75e33' (i.e. Phase-2 menu)
-	    if [[ -f "$hlt_file" && "$hlt_file" != *75e33* ]]; then
+	    # Check if it's a file (not a directory) and does not contain '75e33' or 'NGTScouting' (i.e. Phase-2 menu)
+	    if [[ -f "$hlt_file" && "$hlt_file" != *75e33* && "$hlt_file" != *NGTScouting* ]]; then
 		# Proceed with your logic for the valid file
 		#echo "Processing file: $hlt_file"
    
