@@ -30,7 +30,7 @@ hltGetConfiguration {hltMenu} \
   --process HLTX \
   --globaltag 150X_dataRun3_HLT_forTriggerStudies_v4 \
   --data \
-  --no-prescale \
+  --prescale "2p0E34" \
   --output minimal \
   --max-events {numEventsPerJob} \
   > {hltLabel}.py && \
