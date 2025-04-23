@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     hltLabel = sys.argv[1]
 
-    hltMenu = '/dev/CMSSW_15_0_0/GRun/V60'
+    hltMenu = '/dev/CMSSW_15_0_0/GRun/V63'
 
     hltGetCmd = f"""
 https_proxy=http://cmsproxy.cms:3128/ \
@@ -120,23 +120,51 @@ process = customizeHLTfor2024L1TMenu(process)
 process.GlobalTag.globaltag = '150X_dataRun3_HLT_forTriggerStudies_v4'
 """
 
+    customizeHLTfor2025JECs = """
+def customizeHLTfor2025JECs(process):
+    jecTagsDict = {
+        'AK4CaloHLT': 'JetCorrectorParametersCollection_Run3Winter25Digi_AK4CaloHLT_v2',
+        'AK8CaloHLT': 'JetCorrectorParametersCollection_Run3Winter25Digi_AK8CaloHLT_v2',
+        'AK4PFHLT': 'JetCorrectorParametersCollection_Run3Winter25Digi_AK4PFHLT_v2',
+        'AK8PFHLT': 'JetCorrectorParametersCollection_Run3Winter25Digi_AK8PFHLT_v2',
+    }
+
+    try:
+        for (labelName, tagName) in jecTagsDict.items():
+            process.GlobalTag.toGet += [
+                cms.PSet(
+                    record = cms.string("JetCorrectionsRecord"),
+                    label = cms.untracked.string(labelName),
+                    tag = cms.string(tagName),
+                ),
+            ]
+    except:
+        raise RuntimeError("customizeHLTfor2025JECs -- GlobalTag ESSource could not be customized !")
+
+    return process
+"""
+
     configWithGTv5 = f"""from {hltLabel} import cms, process
 
 from HLTrigger.Configuration.common import *
+
+process.GlobalTag.globaltag = '150X_dataRun3_HLT_forTriggerStudies_v4'
 
 {customizeHLTfor2024L1TMenu}
 
 process = customizeHLTfor2024L1TMenu(process)
 
-process.GlobalTag.globaltag = '150X_dataRun3_HLT_forTriggerStudies_v5'
+{customizeHLTfor2025JECs}
+
+process = customizeHLTfor2025JECs(process)
 
 for prod in producers_by_type(process, 'CaloTowersCreator'):
     prod.EcalRecHitThresh = True
 """
 
     hltCfgTypes = {
-        f'{hltLabel}_GTv4': configWithGTv4,
-        f'{hltLabel}_GTv5': configWithGTv5,
+        f'{hltLabel}_JECs2024v1': configWithGTv4,
+        f'{hltLabel}_JECs2025v2': configWithGTv5,
     }
 
     print(f'Creating list of EDM input files on EOS ...')
