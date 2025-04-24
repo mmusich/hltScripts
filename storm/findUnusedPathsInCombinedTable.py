@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 
-os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/HLT > HLT.py && sleep 2')
+os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/HLT > HLT.py')
 from HLT import cms,process as hlt
 
 os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/GRun > GRun.py')
@@ -20,8 +20,9 @@ os.system('hltConfigFromDB --configName /dev/CMSSW_15_0_0/Special > Spec.py')
 from Spec import process as spec
 
 paths = []
-for foo in hlt.paths_():
-  paths.append(foo)
+for pathlist in [hlt.paths_(), hlt.endpaths_()]:
+  for foo in pathlist:
+    paths.append(foo)
 paths = sorted(list(set(paths)))
 for foo in paths:
   if foo in grun.paths_(): continue
@@ -29,4 +30,9 @@ for foo in paths:
   if foo in pref.paths_(): continue
   if foo in pion.paths_(): continue
   if foo in spec.paths_(): continue
+  if foo in grun.endpaths_(): continue
+  if foo in hion.endpaths_(): continue
+  if foo in pref.endpaths_(): continue
+  if foo in pion.endpaths_(): continue
+  if foo in spec.endpaths_(): continue
   print(foo[:foo.rfind('_v')+2] if '_v' in foo else foo)
