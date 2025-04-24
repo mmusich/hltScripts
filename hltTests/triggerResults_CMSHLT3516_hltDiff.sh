@@ -11,12 +11,12 @@ diff_files() {
 }
 
 hltLabels=(
-  hltTestCMSHLT3516_GTv5
+  hltTestCMSHLT3516_JECs2025v2
 )
 
 for hltLabel in "${hltLabels[@]}"; do
 
-  diff_files hltTestCMSHLT3516_GTv4 "${hltLabel}"
+  diff_files hltTestCMSHLT3516_JECs2025v1 "${hltLabel}"
 
 done
 unset hltLabel

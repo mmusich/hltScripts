@@ -163,7 +163,7 @@ for prod in producers_by_type(process, 'CaloTowersCreator'):
 """
 
     hltCfgTypes = {
-        f'{hltLabel}_JECs2024v1': configWithGTv4,
+        f'{hltLabel}_JECs2025v1': configWithGTv4,
         f'{hltLabel}_JECs2025v2': configWithGTv5,
     }
 
