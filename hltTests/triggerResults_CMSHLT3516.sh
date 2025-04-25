@@ -10,7 +10,7 @@ merge_files() {
 }
 
 hltLabels=(
-#  hltTestCMSHLT3516_JECs2024v1
+  hltTestCMSHLT3516_JECs2025v1
   hltTestCMSHLT3516_JECs2025v2
 )
 

@@ -148,7 +148,7 @@ def customizeHLTfor2025JECs(process):
 
 from HLTrigger.Configuration.common import *
 
-process.GlobalTag.globaltag = '150X_dataRun3_HLT_forTriggerStudies_v4'
+process.GlobalTag.globaltag = '150X_dataRun3_HLT_forTriggerStudies_v5'
 
 {customizeHLTfor2024L1TMenu}
 
