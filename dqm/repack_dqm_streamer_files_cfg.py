@@ -1,5 +1,5 @@
 # run as e.g.: 
-# cmsRun repacker_cfg.py runInputDir=/eos/user/d/dpapagia/data/ outputBaseDir=. runNumber=392700 scanOnce=True
+# cmsRun repack_dqm_streamer_files_cfg.py runInputDir=/eos/user/d/dpapagia/data/ outputBaseDir=. runNumber=392700 scanOnce=True
 
 import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.VarParsing as VarParsing
