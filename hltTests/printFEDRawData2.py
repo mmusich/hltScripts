@@ -142,6 +142,7 @@ if __name__ == '__main__':
 
    print('='*30)
    print('Events processed =', nEvtProcessed)
+   print('='*30)
 
    for foo in evtSizeDict:
 #       frac = 100. * evtSizeDict[foo] / evtSizeDict['Total']
