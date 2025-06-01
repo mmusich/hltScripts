@@ -1,13 +1,14 @@
 #!/bin/bash
 
-cmsDriver.py l1Ntuple -s L1REPACK:Full --python_filename=data_full.py -n 1500 \
- --era=Run3_2025 --data --conditions=140X_dataRun3_HLT_v3 \
- --filein=/store/data/Run2024I/EphemeralHLTPhysics5/RAW/v1/000/386/593/00000/545e47b2-a41e-46d6-a9e3-8c6d26fb3ea1.root \
- --processName=HLT2 --no_output --no_exec
+cmsDriver.py l1Ntuple -s L1REPACK:Full \
+ --python_filename l1t_L1REPACK_Full_base.py --dump_python -n 1500 \
+ --era Run3_2025 --data --conditions 150X_dataRun3_HLT_v1 \
+ --filein /store/data/Run2024I/EphemeralHLTPhysics5/RAW/v1/000/386/593/00000/545e47b2-a41e-46d6-a9e3-8c6d26fb3ea1.root \
+ --processName HLT2 --no_output --no_exec
 
-edmConfigDump data_full.py > d.py
+cp l1t_L1REPACK_Full_base.py l1t_L1REPACK_Full.py
 
-cat <<@EOF >> d.py
+cat <<@EOF >> l1t_L1REPACK_Full.py
 
 ## Import the GMT Raw to Digi module
 #import EventFilter.L1TRawToDigi.gmtStage2Digis_cfi
@@ -89,4 +90,5 @@ process.L1TMonitorPath2 = cms.Path(
 process.schedule.append( process.L1TMonitorPath2 )
 @EOF
 
-cmsRun d.py &> d.log
+cmsRun l1t_L1REPACK_Full.py &> l1t_L1REPACK_Full.log
+grep MonitorPath l1t_L1REPACK_Full.log | head -2
