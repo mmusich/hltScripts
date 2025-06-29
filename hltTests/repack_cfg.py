@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 from sys import argv
 
-input=argv[2] 
+input=argv[1]
 stream=input.rsplit('/',1)[-1].rstrip('.dat')
 outbasedir=input.rsplit('testRepack',1)[0]
 
@@ -32,6 +32,8 @@ process.write_PrimDS1_RAW = cms.OutputModule("PoolOutputModule",
     dataset = cms.untracked.PSet(
         dataTier = cms.untracked.string('RAW')
     ),
+    compressionAlgorithm = cms.untracked.string( "ZSTD" ),
+    compressionLevel = cms.untracked.int32( 3 ),
 #    fileName = cms.untracked.string(outbasedir+'testRepack/output/'+stream+'_write_RAW.root')
     fileName = cms.untracked.string('tmp.root')
 )
