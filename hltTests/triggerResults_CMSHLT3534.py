@@ -18,10 +18,10 @@ if __name__ == '__main__':
     numThreadsPerJobs = 32
     numStreamsPerJobs = 24
 
-    eosDirs = [f'/eos/cms/store/data/Run2025C/HLTPhysics/RAW/v1/000/393/461/00000/']
+    eosDirs = [f'/eos/cms/store/data/Run2025D/EphemeralHLTPhysics0/RAW/v1/000/394/959/00000/']
 
-    hltMenu1 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test11/GRun/V1'
-    hltMenu2 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test11/GRun/V5'
+    hltMenu1 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test21/GRun/V1'
+    hltMenu2 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test21/GRun/V3'
 
     hltLabel1 = sys.argv[1]+'_ref'
     hltLabel2 = sys.argv[1]+'_tar'
@@ -65,8 +65,8 @@ process.options.accelerators = ['cpu']
     config_tar = f"from {hltLabel2} import cms, process"
 
     hltCfgTypes = {
-        f'{hltLabel1}_V1': config_ref,
-        f'{hltLabel2}_V5': config_tar,
+        f'{hltLabel1}_mod': config_ref,
+        f'{hltLabel2}_mod': config_tar,
     }
 
     print(f'Creating list of EDM input files on EOS ...')

@@ -10,8 +10,10 @@ merge_files() {
 }
 
 hltLabels=(
-  hltTestCMSHLT3534_baseline_GTv6
-  hltTestCMSHLT3534_target_GTv6
+#  hltTestCMSHLT3534_baseline_GTv6
+#  hltTestCMSHLT3534_target_GTv6
+  hlt250727_ref_mod
+  hlt250727_tar_mod
 )
 
 for hltLabel in "${hltLabels[@]}"; do
