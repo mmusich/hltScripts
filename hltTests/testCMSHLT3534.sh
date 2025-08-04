@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 run(){
 
+  https_proxy=http://cmsproxy.cms:3128/ \
   hltGetConfiguration "${2}" \
    --globaltag 142X_mcRun3_2025_realistic_v7 \
    --mc \
@@ -30,5 +31,5 @@ process.hltOutputMinimal.outputCommands += [
   cmsRun "${1}".py &> "${1}".log
 }
 
-run hlt1 /dev/CMSSW_15_0_0/GRun/V103
-run hlt2 /users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test21/GRun/V3
+run testCMSHLT3534_hlt1 /dev/CMSSW_15_0_0/GRun/V103
+run testCMSHLT3534_hlt2 /users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test21/GRun/V3
