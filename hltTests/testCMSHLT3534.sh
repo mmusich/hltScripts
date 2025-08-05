@@ -16,11 +16,21 @@ run(){
 
   cat <<@EOF >> "${1}".py
 
-process.options.numberOfThreads = 8
-process.options.numberOfStreams = 8
+process.options.accelerators = ['cpu']
+
+process.options.numberOfThreads = 1
+process.options.numberOfStreams = 1
+
+process.hltSiStripRawToClustersFacility.onDemand = False
 
 process.hltOutputMinimal.fileName = "${1}.root"
 process.hltOutputMinimal.outputCommands += [
+    "keep *_hltMergedTracks_*_*",
+    "keep *_hltMergedTracksSerialSync_*_*",
+    "keep *_hltIterL3MuonTracks_*_*",
+    "keep *_hltIterL3MuonTracksSerialSync_*_*",
+    "keep *_hltIterL3MuonAndMuonFromL1Merged_*_*",
+    "keep *_hltIter4MergedWithIter0ForTau_*_*",
     "keep *_hltPFMuonMerging_*_*",
     "keep *_hltPFMuonMergingSerialSync_*_*",
     "keep *_hltDiMuonMergingIter01TkMu_*_*",
