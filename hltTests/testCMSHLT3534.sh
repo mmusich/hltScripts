@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
 maxEvents=1
-skipEvents=1007
+skipEvents=680
 
 run(){
 
