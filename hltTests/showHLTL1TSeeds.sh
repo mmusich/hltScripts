@@ -2,8 +2,7 @@
 
 #[ -f hlt.py ] || (wget https://raw.githubusercontent.com/cms-sw/cmssw/master/HLTrigger/Configuration/python/HLT_FULL_cff.py -O hlt.py)
 
-
-python3 <<EOF 
+python3 <<@EOF
 from hlt import cms, fragment as process
 
 def selectPaths(pathName):
@@ -34,4 +33,17 @@ for pathName in sorted(retDict.keys()):
       else:
         print('  ', l1tSeed)
 #        raise Exception(l1tSeed)
-EOF
+
+#retDict2 = {}
+#for foo in retDict:
+#  for bar in retDict[foo]:
+#      if bar not in retDict2: retDict2[bar] = []
+#      retDict2[bar] += [foo]
+#
+#for seedName in sorted(retDict2.keys()):
+#  hltSeeds = sorted(list(set(retDict2[seedName])))
+#  if hltSeeds:
+#    print('\n', seedName)
+#    for hltSeed in hltSeeds:
+#      print('  ', hltSeed)
+@EOF
