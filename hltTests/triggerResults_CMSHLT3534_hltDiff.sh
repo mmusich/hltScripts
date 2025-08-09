@@ -1,22 +1,12 @@
 #!/bin/bash -e
 
 diff_files() {
-  hltOldTag=$1
-  hltNewTag=$2
   hltDiff -j -c \
-    -o "${hltOldTag}".root \
-    -n "${hltNewTag}".root \
-    -F "${hltOldTag}"_vs_"${hltNewTag}" \
-     > "${hltOldTag}"_vs_"${hltNewTag}".txt
+    -o "${1}".root \
+    -n "${2}".root \
+    -F "${3}" \
+     > "${3}".txt
 }
 
-hltLabels=(
-  hltTestCMSHLT3534_target_GTv6
-)
-
-for hltLabel in "${hltLabels[@]}"; do
-
-  diff_files hltTestCMSHLT3534_baseline_GTv6 "${hltLabel}"
-
-done
-unset hltLabel
+diff_files hltTestCMSHLT3534_250808_hlt1_mod hltTestCMSHLT3534_250808_hlt3_mod hltTestCMSHLT3534_250808_hlt1_vs_hlt3
+diff_files hltTestCMSHLT3534_250808_hlt2_mod hltTestCMSHLT3534_250808_hlt3_mod hltTestCMSHLT3534_250808_hlt2_vs_hlt3

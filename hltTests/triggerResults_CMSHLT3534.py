@@ -12,7 +12,7 @@ if __name__ == '__main__':
     ### parameters
     ###
     minRunNumber = 0
-    maxRunNumber = 99
+    maxRunNumber = 119
     numEventsPerJob = -1
 
     numThreadsPerJobs = 32
@@ -20,11 +20,13 @@ if __name__ == '__main__':
 
     eosDirs = [f'/eos/cms/store/data/Run2025D/EphemeralHLTPhysics0/RAW/v1/000/394/959/00000/']
 
-    hltMenu1 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test21/GRun/V1'
-    hltMenu2 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test21/GRun/V3'
+    hltMenu1 = '/dev/CMSSW_15_0_0/GRun/V110'
+    hltMenu2 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test31/GRun/V3'
+    hltMenu3 = '/users/missirol/test/dev/CMSSW_15_0_0/CMSHLT_3534/Test41/GRun/V3'
 
-    hltLabel1 = sys.argv[1]+'_ref'
-    hltLabel2 = sys.argv[1]+'_tar'
+    hltLabel1 = sys.argv[1]+'_hlt1'
+    hltLabel2 = sys.argv[1]+'_hlt2'
+    hltLabel3 = sys.argv[1]+'_hlt3'
 
     def hltGetCmd(hltMenu, hltLabel):
         return f"""
@@ -59,14 +61,16 @@ process.options.accelerators = ['cpu']
 
     hltGetCmd1 = hltGetCmd(hltMenu1, hltLabel1)
     hltGetCmd2 = hltGetCmd(hltMenu2, hltLabel2)
+    hltGetCmd3 = hltGetCmd(hltMenu3, hltLabel3)
 
-    config_ref = f"from {hltLabel1} import cms, process"
-
-    config_tar = f"from {hltLabel2} import cms, process"
+    config_hlt1 = f"from {hltLabel1} import cms, process"
+    config_hlt2 = f"from {hltLabel2} import cms, process"
+    config_hlt3 = f"from {hltLabel3} import cms, process"
 
     hltCfgTypes = {
-        f'{hltLabel1}_mod': config_ref,
-        f'{hltLabel2}_mod': config_tar,
+        f'{hltLabel1}_mod': config_hlt1,
+        f'{hltLabel2}_mod': config_hlt2,
+        f'{hltLabel3}_mod': config_hlt3,
     }
 
     print(f'Creating list of EDM input files on EOS ...')
@@ -88,6 +92,9 @@ process.options.accelerators = ['cpu']
 
     print(f'Downloading HLT menu ({hltMenu2}) from ConfDB ...')
     execmd(hltGetCmd2)
+
+    print(f'Downloading HLT menu ({hltMenu3}) from ConfDB ...')
+    execmd(hltGetCmd3)
 
     print(f'Creating python configurations for {count} parallel jobs ', end='')
     print(f'({numThreadsPerJobs} threads and {numStreamsPerJobs} streams per job) ...')
