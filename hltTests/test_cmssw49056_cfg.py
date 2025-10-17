@@ -7,6 +7,8 @@ import glob
 
 parser = argparse.ArgumentParser(prog=sys.argv[0], description='Test of the L1-uGT emulator')
 parser.add_argument('-n', '--maxEvents', type=int, help='Value of process.maxEvents.input', default=-1)
+parser.add_argument('-t', '--threads', type=int, help='Value of process.options.numberOfThreads', default=1)
+parser.add_argument('-s', '--streams', type=int, help='Value of process.options.numberOfStreams', default=0)
 parser.add_argument('-l', '--rawDataLabel', type=str, help='Label for the FEDRawDataCollection input product', default='rawDataCollector')
 group = parser.add_mutually_exclusive_group()
 group.add_argument('--mc', dest = 'useMC', action = 'store_true', default = False, help = 'Use MC as input')
@@ -15,9 +17,10 @@ args = parser.parse_args()
 
 process = cms.Process('TEST')
 
-process.options.numberOfThreads = 1
-process.options.numberOfStreams = 0
+process.options.numberOfThreads = args.threads
+process.options.numberOfStreams = args.streams
 process.options.wantSummary = False
+
 process.maxEvents.input = args.maxEvents
 
 # MessageLogger
