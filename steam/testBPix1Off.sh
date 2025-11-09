@@ -15,7 +15,10 @@ done
 ALL_FILES="${ALL_FILES%?}"
 echo "Discovered files: $ALL_FILES"
 
-cmsDriver.py step2 -s HLT:GRun,DQM:sistripMonitorHLTsequence+sipixelMonitorHLTsequence+trackingMonitorHLT \
+# GT to kill Bpi1: 150X_dataRun3_HLT_Candidate_2025_10_27_10_07_21
+# regular HLT GT: 150X_dataRun3_HLT_v1
+
+cmsDriver.py step2 -s HLT:GRun,DQM:sistripMonitorHLTsequence+sipixelMonitorHLTsequence+trackingMonitorHLT+vertexingMonitorHLT \
 	     --conditions 150X_dataRun3_HLT_Candidate_2025_10_27_10_07_21 \
 	     --datatier DQMIO \
 	     -n 10000 \
@@ -49,6 +52,10 @@ process.hltTrackRefitterForPixelDQM.MeasurementTracker = cms.string('hltESPMeasu
 process.hltTrackRefitterForSiStripMonitorTrack.Fitter = cms.string('hltESPKFFittingSmootherWithOutliersRejectionAndRK')
 process.hltTrackRefitterForSiStripMonitorTrack.MeasurementTracker = cms.string('hltESPMeasurementTracker')
 process.hltTrackRefitterForSiStripMonitorTrack.MeasurementTrackerEvent = cms.InputTag("hltMeasurementTrackerEvent")
+
+process.hltPixelVertexResolution.beamspotSrc = cms.untracked.InputTag("hltOnlineBeamSpot")
+process.hltTrimmedPixelVertexResolution.beamspotSrc = cms.untracked.InputTag("hltOnlineBeamSpot")
+process.hltVerticesPFFilterResolution.beamspotSrc = cms.untracked.InputTag("hltOnlineBeamSpot")
 @EOF
 
 cmsRun hlt_BPix1OFF.py &> hlt_BPix1OFF.log
@@ -66,3 +73,5 @@ cmsDriver.py step3 -s HARVESTING:@standardDQM \
 	     --no_exec
 
 cmsRun step3_HARVESTING.py >& harvesting.log
+
+mv DQM_V0001_R000398183__Global__CMSSW_X_Y_Z__RECO.root DQM_V0001_R000398183__BPixOFF_10k.root
