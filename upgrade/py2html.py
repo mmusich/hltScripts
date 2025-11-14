@@ -6,8 +6,6 @@ from pathlib import Path
 import argparse
 import FWCore.ParameterSet.Config as cms
 import FWCore.ParameterSet.SequenceTypes as cmsSequenceTypes
-import HeterogeneousCore.CUDACore.SwitchProducerCUDA as switchProducerCUDA
-
 
 class Visitor:
     def __init__(self, out, process, prefix):
@@ -55,12 +53,10 @@ class Visitor:
             cms.EDAnalyzer: "EDAnalyzer",
             cms.EDProducer: "EDProducer",
             cms.EDFilter: "EDFilter",
-            cms.SwitchProducer: "SwitchProducer",
             cmsSequenceTypes._SequenceIgnore: "SequenceIgnore",
             cmsSequenceTypes._SequenceNegation: "SequenceNegation",
             cmsSequenceTypes.SequencePlaceholder: "SequencePlaceholder",
             cmsSequenceTypes.TaskPlaceholder: "TaskPlaceholder",
-            switchProducerCUDA.SwitchProducerCUDA: "SwitchProducerCUDA",
         }
         element_type = element_map.get(type(value))
         cpp_type = None
@@ -74,8 +70,6 @@ class Visitor:
             or type(value) is cmsSequenceTypes.SequencePlaceholder
         ):
             pass
-        elif type(value) is switchProducerCUDA.SwitchProducerCUDA:
-            cpp_type = element_type
         else:
             cpp_type = value.type_()
         githubSearch = self.githubSearch.format(cpp_type=cpp_type)
@@ -96,9 +90,18 @@ class Visitor:
         tmpout.write("<pre>\n")
         lines = []
         gg = value.dumpPython()
+        #lines = gg.split("\n")
+        #self.printAndExpandRefs(lines, tmpout, "")
+
+        label = self.get_label(value)
+
+        # Insert assignment
+        tmpout.write(f"{label} = ")
+
+        # Print the dumpPython block
         lines = gg.split("\n")
         self.printAndExpandRefs(lines, tmpout, "")
-
+        
     def _fake(self):
         return "Not_Available"
 
@@ -119,6 +122,23 @@ class Visitor:
             self.out.write("</li>\n")
 
     def printAndExpandRefs(self, lines, tmpout, indent):
+        for line in lines:
+            refs = re.search(r"refToPSet_\s+=\s+.*'(.*?)'", line)
+
+            # write the line exactly as dumpPython() produced it
+            tmpout.write(indent + line + "\n")
+
+            if refs:
+                indent2 = indent + "  "
+                tmpout.write(f"{indent2}" + "-" * 58 + "\n")
+                self.printAndExpandRefs(
+                    getattr(self.process, refs.group(1)).dumpPython().split("\n"),
+                    tmpout,
+                    indent2,
+                )
+                tmpout.write(f"{indent2}" + "-" * 58 + "\n")
+            
+    def printAndExpandRefsOld(self, lines, tmpout, indent):
         cutAtColumn = 978
         for line in lines:
             refs = re.search(r"refToPSet_\s+=\s+.*'(.*?)'", line)
@@ -212,7 +232,6 @@ def preamble() -> str:
   li.EDProducer {font-style:italic; color: #a80000;}
   li.EDFilter   {font-style:bold; color: #F90;}
   li.EDAnalyzer {font-style:italic; color: #360;}
-  li.SwitchProducer {font-style:italic; color: #4e9a06;}
   li.SequenceIgnore {font-style:bold; color: #a800a8;}
   li.SequenceNegation {font-style:bold; color: #a800a8;}
   .github-link {
