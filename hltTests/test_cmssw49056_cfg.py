@@ -7,9 +7,11 @@ import glob
 
 parser = argparse.ArgumentParser(prog=sys.argv[0], description='Test of the L1-uGT emulator')
 parser.add_argument('-n', '--maxEvents', type=int, help='Value of process.maxEvents.input', default=-1)
+parser.add_argument('-f', '--fileNames', nargs='+', help='List of EDM input files (to be used in process.source.fileNames)', default=[])
 parser.add_argument('-t', '--threads', type=int, help='Value of process.options.numberOfThreads', default=1)
 parser.add_argument('-s', '--streams', type=int, help='Value of process.options.numberOfStreams', default=0)
 parser.add_argument('-l', '--rawDataLabel', type=str, help='Label for the FEDRawDataCollection input product', default='rawDataCollector')
+parser.add_argument('-d', '--dumpTriggerResults', action = 'store_true', default = False, help = 'Value of (L1TGlobalSummary).dumpTriggerResults (trigger results per event)')
 group = parser.add_mutually_exclusive_group()
 group.add_argument('--mc', dest = 'useMC', action = 'store_true', default = False, help = 'Use MC as input')
 group.add_argument('--data', dest = 'useMC', action = 'store_false', default = False, help = 'Use real data as input')
@@ -25,7 +27,7 @@ process.maxEvents.input = args.maxEvents
 
 # MessageLogger
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.MessageLogger.cerr.FwkReport.reportEvery = int(math.pow(10, max(0, int(math.log10(args.maxEvents)) - 2)) if args.maxEvents > 0 else 100)
+process.MessageLogger.cerr.FwkReport.reportEvery = 1 #int(math.pow(10, max(0, int(math.log10(args.maxEvents)) - 2)) if args.maxEvents > 0 else 100)
 process.MessageLogger.L1TGlobalSummary = cms.untracked.PSet()
 
 # Global Tag
@@ -113,7 +115,7 @@ process.l1tGlobalSummary1 = cms.EDAnalyzer('L1TGlobalSummary',
     ExtInputTag = cms.InputTag('gtStage2Digis'),
     MinBx = cms.int32(0),
     MaxBx = cms.int32(0),
-    DumpTrigResults = cms.bool(False),
+    DumpTrigResults = cms.bool(args.dumpTriggerResults),
     DumpRecord = cms.bool(False),
     DumpTrigSummary = cms.bool(True),
     ReadPrescalesFromFile = cms.bool(False),
@@ -166,13 +168,16 @@ if args.useMC:
         '/store/mc/RunIII2024Summer24MiniAOD/VBFH-Hto2G_Par-M-1000-W-5p6_TuneCP5_13p6TeV_powheg-pythia8/MINIAODSIM/140X_mcRun3_2024_realistic_v26-v2/2530000/ca1fd686-3af8-4822-b179-9afb1dfd2ec3.root',
     ]
 
-    process.gtStage2Digis2.MuonInputTag = 'gmtStage2Digis:Muon'
-    process.gtStage2Digis2.MuonShowerInputTag = ''
-    process.gtStage2Digis2.EGammaInputTag = 'caloStage2Digis:EGamma'
-    process.gtStage2Digis2.TauInputTag = 'caloStage2Digis:Tau'
-    process.gtStage2Digis2.JetInputTag = 'caloStage2Digis:Jet'
-    process.gtStage2Digis2.EtSumInputTag = 'caloStage2Digis:EtSum'
-    process.gtStage2Digis2.EtSumZdcInputTag = ''
-    process.gtStage2Digis2.CICADAInputTag = ''
+process.gtStage2Digis2.MuonInputTag = 'gmtStage2Digis:Muon'
+process.gtStage2Digis2.MuonShowerInputTag = ''
+process.gtStage2Digis2.EGammaInputTag = 'caloStage2Digis:EGamma'
+process.gtStage2Digis2.TauInputTag = 'caloStage2Digis:Tau'
+process.gtStage2Digis2.JetInputTag = 'caloStage2Digis:Jet'
+process.gtStage2Digis2.EtSumInputTag = 'caloStage2Digis:EtSum'
+process.gtStage2Digis2.EtSumZdcInputTag = ''
+process.gtStage2Digis2.CICADAInputTag = ''
 
-    process.Path.remove(process.gtStage2Digis)
+process.Path.remove(process.gtStage2Digis)
+
+if args.fileNames:
+    process.source.fileNames = args.fileNames
