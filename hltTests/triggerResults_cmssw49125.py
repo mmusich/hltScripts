@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     eosDirs = [f'/eos/cms/store/data/Run2025G/EphemeralHLTPhysics0/RAW/v1/000/398/183/00000/']
 
-    hltMenu = 'run:398183'
+    hltMenu = 'run:398802'
 
     hltLabel = sys.argv[1]
 
