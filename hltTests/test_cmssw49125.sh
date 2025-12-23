@@ -3,7 +3,7 @@
 RUN_NUMBER=398308
 
 hltGetConfiguration \
-  run:"${RUN_NUMBER}" \
+  /dev/CMSSW_15_1_0/GRun \
   --globaltag 150X_dataRun3_HLT_v1 \
   --data \
   --no-prescale \
@@ -18,8 +18,11 @@ process.options.wantSummary = False
 process.options.numberOfThreads = 1
 process.options.numberOfStreams = 0
 
-#process.hltSiPixelClustersSoA.DoDigiMorphing = False
-#process.hltSiPixelClustersSoASerialSync.DoDigiMorphing = False
+#process.hltSiPixelClustersSoA.DoDigiMorphing = True
+#process.hltSiPixelClustersSoASerialSync.DoDigiMorphing = True
+
+process.hltSiPixelClustersSoA.DoDigiMorphing = False
+process.hltSiPixelClustersSoASerialSync.DoDigiMorphing = False
 @EOF
 
 cmsRun hlt_"${RUN_NUMBER}".py &> hlt_"${RUN_NUMBER}".log
