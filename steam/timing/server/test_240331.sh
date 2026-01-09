@@ -27,15 +27,19 @@ foo2() {
   ${EXE2} "${2}" --tag _"${1}"
 }
 
-for ntry in {1..2}; do
+for ntry in {1..1}; do
 
   foo1 240331_ThroughputMeasurements_TimingTest01_V03_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_01/GRun/V3
-  foo2 240331_ThroughputMeasurements_TimingTest01_V03_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_01/GRun/V3
+#  foo2 240331_ThroughputMeasurements_TimingTest01_V03_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_01/GRun/V3
 
 #  foo1 240331_ThroughputMeasurements_TimingTest02_V02_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_02/GRun/V2
 #  foo1 240331_ThroughputMeasurements_TimingTest02_V03_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_02/GRun/V3
 
 #  foo1 240331_ThroughputMeasurements_TimingTest03_V02_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_03/GRun/V2
 #  foo1 240331_ThroughputMeasurements_TimingTest03_V03_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_03/GRun/V3
+
+#  foo1 240331_ThroughputMeasurements_TimingTest04_V02_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_04/GRun/V2
+
+#  foo1 240331_ThroughputMeasurements_TimingTest05_V02_try"${ntry}" /users/missirol/test/dev/CMSSW_14_0_0/tmp/240331_ThroughputMeasurements/TimingTest_05/GRun/V2
 
 done; unset nnn;

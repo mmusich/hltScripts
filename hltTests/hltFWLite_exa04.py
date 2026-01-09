@@ -301,18 +301,18 @@ if __name__ == '__main__':
 
        skipEvents = 0 if opts.skipEvents < 0 else opts.skipEvents
 
-       eventIndex = 0
+       eventIndex = -1
        for event in events:
+         eventIndex += 1
          if (eventIndex < skipEvents) or ((opts.maxEvents >= 0) and (nEvtProcessed >= opts.maxEvents)):
            continue
 
-         if (not (eventIndex % SHOW_EVERY)) and (eventIndex > 0):
+         if (not (nEvtProcessed % SHOW_EVERY)) and (nEvtProcessed > 0):
            print('-'*10)
-           print('Event #'+str(eventIndex))
+           print('Event #'+str(nEvtProcessed))
 
          analyse_event(event=event, verbosity=opts.verbosity)
          nEvtProcessed += 1
-         eventIndex += 1
 
    print('='*30)
    print(colored_text('Events processed =', ['1']), nEvtProcessed)
